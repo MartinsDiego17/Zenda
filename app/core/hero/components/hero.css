@@ -1,0 +1,19 @@
+.hero-container h1 {
+    font-family: var(--font-poppins);
+    color: var(--color-text-primary);
+}
+
+.hero-container {
+    animation: 1s ease-in-out show-hero;
+}
+
+@keyframes show-hero {
+    0% {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}

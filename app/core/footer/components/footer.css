@@ -1,0 +1,35 @@
+.footer-visitor-container ul li {
+    backdrop-filter: blur(5px);
+    color: #444;
+    font-weight: 100;
+    cursor: pointer;
+    padding: 10px 25px;
+    border-radius: 35px;
+    transition: .3s;
+
+    &:hover {
+        color: black;
+        background-color: var(--color-primary-transparent);
+    }
+}
+
+hr {
+    border-top: solid 0.5px #555;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    width: 100%;
+}
+
+.footer-visitor-container p {
+    opacity: .6;
+    color: var(--color-text-primary);
+}
+
+.footer-visitor-container p:last-child {
+    font-weight: 100;
+    opacity: 1;
+}
+
+.footer-visitor-container p:last-child span:last-child {
+    font-weight: 600;
+}

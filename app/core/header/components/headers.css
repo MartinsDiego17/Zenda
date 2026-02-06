@@ -1,0 +1,21 @@
+
+.header-visitor-container {
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    z-index: 50;
+    animation: shrink-header linear both;
+    animation-timeline: scroll(root);
+    animation-range: 100px 300px
+}
+
+@keyframes shrink-header {
+    to {
+        backdrop-filter: blur(50px);
+        box-shadow: 0px 0px 50px rgba(0,0,0,0.4);
+    }
+}
+
+.header-visitor-container #button-personalized.primary {
+    padding: 20px 30px;
+}

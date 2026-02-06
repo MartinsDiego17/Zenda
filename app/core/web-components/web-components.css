@@ -1,0 +1,44 @@
+#button-personalized {
+    border-radius: 50px;
+    font-size: 1rem;
+    transition: .3s;
+    padding: 25px 30px;
+    border: solid 1px transparent;
+    outline: none;
+    cursor: pointer;
+}
+
+#button-personalized:active {
+    transform: translateY(5px);
+}
+
+#button-personalized.secondary {
+    background-color: transparent;
+    border: solid 1px var(--color-border);
+    color: var(--color-text-primary);
+    &:hover {
+        background-color: rgba(204, 204, 204, 0.5);
+    }
+}
+
+#button-personalized.primary {
+    background-color: var(--color-primary);
+    &:hover {
+        background-color: var(--color-primary-hover);
+        border-color: var(--color-primary);
+    }
+}
+
+.logo-text {
+    font-family: var(--font-poppins);
+}
+
+.login-form-container .form-shadcn {
+    border-radius: 10px;
+    box-shadow: 0px 0px 25px rgba(0,0,0,0.4);
+    backdrop-filter: blur(30px);
+}
+
+.login-form-container .form-shadcn button:last-child:active {
+    transform: scale(.95);
+}
