@@ -11,6 +11,11 @@
   "dependencies": {
     "@fontsource-variable/inter": "^5.2.8",
     "@fontsource/poppins": "^5.2.7",
+    "@nestjs/common": "^11.1.13",
+    "@nestjs/core": "^11.1.13",
+    "@nestjs/platform-express": "^11.1.13",
+    "@vercel/node": "^5.5.32",
+    "aws-lambda": "^1.0.7",
     "axios": "^1.13.4",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
@@ -19,6 +24,9 @@
     "radix-ui": "^1.4.3",
     "react": "19.2.3",
     "react-dom": "19.2.3",
+    "reflect-metadata": "^0.2.2",
+    "rxjs": "^7.8.2",
+    "serverless-http": "^4.0.0",
     "tailwind-merge": "^3.4.0"
   },
   "devDependencies": {
