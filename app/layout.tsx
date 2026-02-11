@@ -3,6 +3,7 @@ import "./globals.css";
 
 import '@fontsource-variable/inter';
 import '@fontsource/poppins';
+import { AuthProvider } from "./providers/AuthProvider";
 
 
 export const metadata: Metadata = {
@@ -18,7 +19,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        {children}
+        <AuthProvider>
+          {children}
+        </AuthProvider>
       </body>
     </html>
   );

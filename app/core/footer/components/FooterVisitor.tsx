@@ -3,6 +3,8 @@ import { Logo } from "../../web-components/Logo";
 import "./footer.css";
 
 export const FooterVisitor = () => {
+
+
     return (
         <footer className="bottom-0 absolute footer-visitor-container w-screen py-20 flex justify-center">
 

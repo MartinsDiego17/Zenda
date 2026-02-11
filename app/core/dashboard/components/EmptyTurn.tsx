@@ -1,0 +1,19 @@
+import Link from "next/link";
+import { ButtonPrimary } from "../../web-components/ButtonPrimary";
+import { CalendarIcon } from "lucide-react";
+
+export const EmptyTurn = () => {
+    return (
+        <div className="empty-turn-container w-[30%] h-full flex flex-col place-items-center">
+            <h2 className="text-(--color-primary-text) text-2xl text-center mb-10">
+                No tienes turnos vigentes
+            </h2>
+            <Link href={"/dashboard/reserve"}>
+                <ButtonPrimary>
+                    <span><CalendarIcon /></span>
+                    <span>Reservar nuevo turno</span>
+                </ButtonPrimary>
+            </Link>
+        </div>
+    );
+};

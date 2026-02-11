@@ -3,8 +3,8 @@
     font-size: 1rem;
     transition: .3s;
     padding: 25px 30px;
-    border: solid 1px transparent;
     outline: none;
+    border: solid 1px transparent;
     cursor: pointer;
 }
 
@@ -14,7 +14,7 @@
 
 #button-personalized.secondary {
     background-color: transparent;
-    border: solid 1px var(--color-border);
+    border-color: var(--color-border);
     color: var(--color-text-primary);
     &:hover {
         background-color: rgba(204, 204, 204, 0.5);
@@ -25,7 +25,6 @@
     background-color: var(--color-primary);
     &:hover {
         background-color: var(--color-primary-hover);
-        border-color: var(--color-primary);
     }
 }
 

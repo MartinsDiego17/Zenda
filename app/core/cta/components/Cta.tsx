@@ -9,20 +9,19 @@ export const Cta = () => {
             <section className="w-[60vw] h-[40vh] flex place-items-center justify-between">
 
                 <article className="w-1/2">
-                    <h2 className="text-4xl leading-none mb-5 text-(--color-text-primary) font-bold">Crea una cuenta<br />y reserva tu sesión</h2>
-                    <h2 className="font-light text-4xl text-(--color-text-primary)">O inicia sesión</h2>
+                    <h2 className="text-4xl leading-none mb-5 text-(--color-text-primary) font-bold">Inicia sesión<br />y reserva un turno</h2>
                 </article>
 
                 <article className="w-1/2 flex place-items-center justify-end gap-x-5">
-                    <Link href={"/register"}>
+                    <Link href={"/login"}>
                         <ButtonPrimary>
                             <span><User2Icon /></span>
-                            <span>Registrarse</span>
+                            <span>Iniciar sesión</span>
                         </ButtonPrimary>
                     </Link>
                     <Link href={"/login"}>
                         <ButtonSecondary>
-                            <span>Iniciar sesión</span>
+                            <span>Reservar turno</span>
                         </ButtonSecondary>
                     </Link>
                 </article>

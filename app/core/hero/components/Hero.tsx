@@ -15,7 +15,7 @@ export const Hero = () => {
                 optimizando tu agenda y mejorando la experiencia entre profesional y paciente.
             </p>
             <div className="flex gap-x-5">
-                <Link href={"/register"}>
+                <Link href={"/login"}>
                     <ButtonPrimary>
                         <span><CalendarIcon /></span>
                         <span>Reservar sesión</span>

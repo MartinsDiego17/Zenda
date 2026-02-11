@@ -19,3 +19,21 @@
 .header-visitor-container #button-personalized.primary {
     padding: 20px 30px;
 }
+
+#header-visitor .log-out #button-personalized {
+    background-color: var(--color-error);
+}
+
+.button-confirm-modal-logout {
+    background-color: var(--color-primary);
+}
+
+.button-modal-logout {
+    border-radius: 100px;
+    cursor: pointer;
+}
+
+header button {
+    border-radius: 100px;
+    cursor: pointer;
+}

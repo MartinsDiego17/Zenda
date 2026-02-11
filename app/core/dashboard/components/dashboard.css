@@ -1,0 +1,32 @@
+.dashboard-container .dashboard-son {
+    backdrop-filter: blur(30px);
+    background-color: rgba(0,0,0,0.05);
+    border-radius: 10px;
+    border: solid 1px var(--color-border);
+    padding: 50px;
+}
+
+.dashboard-container #button-personalized {
+    width: 100%;
+}
+
+.dashboard-container .currentTurn-container {
+    border: solid 1px var(--color-border);
+    background-color: rgba(0,0,0,0.05);
+    border-radius: 10px;
+    padding: 30px;
+}
+
+.currentTurn-container .dateInfo {
+    padding: 15px 30px;
+    box-shadow: 0px 0px 20px #aaa;
+    border-radius: 10px;
+}
+
+.currentTurn-container h3 {
+    opacity: .8;
+}
+
+.currentTurn-container .button-pending-pay {
+    transition: .2s;
+}
