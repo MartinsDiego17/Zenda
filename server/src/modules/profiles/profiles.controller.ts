@@ -5,7 +5,7 @@ import { UpdateProfileDto } from './dto/update-profile.dto';
 
 @Controller('profiles')
 export class ProfilesController {
-  constructor(private readonly profilesService: ProfilesService) {}
+  constructor(private readonly profilesService: ProfilesService) { }
 
   @Post()
   create(@Body() createProfileDto: CreateProfileDto) {
@@ -18,8 +18,8 @@ export class ProfilesController {
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.profilesService.findOne(+id);
+  async findOne(@Param('id') id: string) {
+    return this.profilesService.findOne({ adminUserId: id });
   }
 
   @Patch(':id')

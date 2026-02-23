@@ -6,7 +6,7 @@ import { FooterVisitor } from "./core/footer/components/FooterVisitor"
 import { HeaderVisitor } from "./core/header/components/HeaderVisitor"
 import { Hero } from "./core/hero/components/Hero"
 import { Modalities } from "./core/modalities/components/Modalities"
-import { Quiestions } from "./core/questions/components/Questions"
+import { Questions } from "./core/questions/components/Questions"
 import { useRedirectUser } from "@/lib/redirectUser"
 
 export default function Home() {
@@ -19,7 +19,7 @@ export default function Home() {
       <Hero />
       <Choose />
       <Modalities />
-      <Quiestions />
+      <Questions />
       <Cta />
       <FooterVisitor />
     </>

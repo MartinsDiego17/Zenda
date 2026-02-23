@@ -13,8 +13,9 @@ export class ProfessionalSettingsController {
   }
 
   @Get()
-  findAll() {
-    return this.professionalSettingsService.findAll();
+  async get() {
+    const professionalSettings = await this.professionalSettingsService.get();
+    return professionalSettings;
   }
 
   @Get(':id')

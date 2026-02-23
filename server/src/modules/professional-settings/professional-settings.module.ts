@@ -5,5 +5,6 @@ import { ProfessionalSettingsController } from './professional-settings.controll
 @Module({
   controllers: [ProfessionalSettingsController],
   providers: [ProfessionalSettingsService],
+  exports: [ProfessionalSettingsService]
 })
 export class ProfessionalSettingsModule {}

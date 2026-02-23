@@ -1,6 +1,6 @@
 import { UUID, Timestamp, TimeString } from "./common.types";
 
-export type SessionModality = "VIRTUAL" | "PRESENTIAL" | "BOTH";
+export type SessionModality = "Virtual" | "Presencial" | "BOTH";
 
 export interface ProfessionalSettings {
   id: UUID;

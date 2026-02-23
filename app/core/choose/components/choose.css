@@ -1,9 +1,10 @@
-.choose-container {
-    border-radius: 20px;
-}
 
 #zenda {
-  padding-top: 150px;
+    background-color: var(--color-secondary-background);
+}
+
+#zenda * {
+    border-radius: 15px;
 }
 
 .choose-container article > span {
@@ -18,32 +19,39 @@
     content: "";
     position: absolute;
     inset: 0;
-    border-top-left-radius: 10px;
-    border-bottom-left-radius: 10px;
-    backdrop-filter: blur(3px);
     z-index: 2;
 }
 
 .choose-container article > span img {
     object-fit: cover;
-    border-top-left-radius: 10px;
-    border-bottom-left-radius: 10px;
 }
 
 .choose-container .title {
     backdrop-filter: blur(40px);
     text-align: center;
-    border-top-right-radius: 10px;
-    border-bottom-right-radius: 10px;
 }
 
 .card-choose-container {
     width: 100%;
     backdrop-filter: blur(10px);
-    background-color: white;
+    background-color: var(--color-primary-background);
     padding: 50px;    
-    border-radius: 5px;
-    box-shadow: 0px 0px 15px rgba(0,0,0,0.2);
+    color: #ccc;
+    transition: .2s;
+    border: solid 1px var(--color-primary-transparent);
     padding-top: 30px;
+    &:hover {
+        box-shadow: 0px 0px 250px var(--color-primary-transparent);
+        transform: translateY(-10px);
+        border-color: var(--color-primary);
+    }
 }
 
+
+#zenda img {
+    height: 100%;
+}
+
+#zenda .choose-image {
+    z-index: 1;
+}

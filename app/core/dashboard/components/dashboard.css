@@ -1,26 +1,32 @@
-.dashboard-container .dashboard-son {
-    backdrop-filter: blur(30px);
-    background-color: rgba(0,0,0,0.05);
-    border-radius: 10px;
-    border: solid 1px var(--color-border);
-    padding: 50px;
-}
-
 .dashboard-container #button-personalized {
     width: 100%;
 }
 
-.dashboard-container .currentTurn-container {
-    border: solid 1px var(--color-border);
-    background-color: rgba(0,0,0,0.05);
+.dashboard-container .empty-turn-container {
+    box-shadow: 0px 0px 5px #ccc;
     border-radius: 10px;
     padding: 30px;
+    padding-bottom: 50px;
+}
+
+.dashboard-container .currentTurn-container {
+    border-top: solid 4px var(--color-primary);
+}
+
+.dashboard-container .history-turns,
+.dashboard-container .currentTurn-container {
+    border-radius: 15px;
+    padding: 30px;
+    padding-top: 20px;
+    box-shadow: 0px 0px 5px #ccc;
 }
 
 .currentTurn-container .dateInfo {
     padding: 15px 30px;
-    box-shadow: 0px 0px 20px #aaa;
     border-radius: 10px;
+    font-size: .9rem;
+    background-color: rgba(0, 0, 0, 0.1);
+    border: solid 1px var(--color-border);
 }
 
 .currentTurn-container h3 {
@@ -29,4 +35,170 @@
 
 .currentTurn-container .button-pending-pay {
     transition: .2s;
+}
+
+.calendar-reserve-container {
+    width: 100%;
+    box-shadow: 0px 0px 5px #ccc;
+}
+
+#modalities-reserve #button-personalized.secondary {
+    width: 50%;
+}
+
+#modalities-reserve #button-personalized.primary {
+    width: 100%;
+}
+
+#user-calendar {
+    overflow: hidden;
+}
+
+.time-select-content {
+    border: solid 1px var(--color-border);
+    background-color: rgba(0, 0, 0, 0.05);
+    backdrop-filter: blur(15px);
+}
+
+.time-select-item {
+    cursor: pointer;
+
+    &:hover {
+        background-color: var(--color-primary-transparent);
+    }
+}
+
+#button-personalized.secondary.button-selected {
+    background-color: var(--color-primary);
+    color: white;
+
+    &:hover {
+        background-color: var(--color-primary);
+        cursor: auto;
+    }
+
+    &:active {
+        transform: translateY(0);
+    }
+}
+
+.payment-container .card-payment-container {
+    border-radius: 15px;
+    box-shadow: 0px 0px 5px #ccc;
+    padding: 30px;
+}
+
+.payment-container .card-payment-container h3 {
+    color: var(--color-text-primary);
+}
+
+.payment-container #button-personalized {
+    width: 15vw;
+}
+
+.payment-container .status-pay-container {
+    background-color: var(--color-secondary-transparent);
+    border-radius: 15px;
+}
+
+.payment-container .mercado-pago-box-container {
+    background-color: var(--color-secondary-transparent);
+    border-radius: 15px;
+}
+
+.payment-container .mercado-pago-box-container .chip {
+    background-color: var(--color-terciary-transparent);
+    padding: 1px 10px;
+    color: var(--color-primary-hover);
+    border-radius: 30px;
+    border: solid 1px var(--color-primary-transparent);
+}
+
+.card-confirm-reserve-container {
+    box-shadow: 0px 0px 5px #ccc;
+    border-radius: 15px;
+    max-width: 18vw;
+    width: 18vw;
+    min-height: 32vh;
+    max-height: 32vh;
+    height: 32vh;
+}
+
+.card-confirm-reserve-container ul li {
+    display: flex;
+    font-size: .9rem;
+    align-items: center;
+    column-gap: 12px;
+}
+
+#table-turns-container::-webkit-scrollbar {
+    width: 5px;
+}
+
+#table-turns-container::-webkit-scrollbar-track {
+    background: transparent;
+    /* fondo del track */
+    border-radius: 10px;
+}
+
+#table-turns-container::-webkit-scrollbar-thumb {
+    background: var(--color-primary-transparent);
+    border-radius: 10px;
+}
+
+.badge-status {
+    background-color: var(--color-secondary-transparent);
+    color: var(--color-primary);
+    font-weight: 900;
+    border: solid 1px var(--color-terciary-transparent);
+}
+
+.layout-button-back button {
+    transition: .2s;
+
+    &:hover {
+        color: black;
+    }
+}
+
+.modalities-container {
+    box-shadow: 0px 0px 5px #ccc;
+    padding: 20px;
+    border-radius: 15px;
+}
+
+.rdp-day {
+    height: 60px;
+}
+
+.card-confirm-reserve-container ul li span:first-child {
+    background-color: var(--color-terciary-transparent);
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.card-payment-container li {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.card-payment-container li div {
+    display: flex;
+    align-items: center;
+    column-gap: 12px;
+}
+
+.card-payment-container li div span:first-child {
+    background-color: var(--color-terciary-transparent);
+    color: var(--color-primary);
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.card-payment-container li div span:last-child {
+    opacity: .6;
+    font-size: .8rem;
+    font-weight: 600;
 }

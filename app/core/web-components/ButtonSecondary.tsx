@@ -1,15 +1,20 @@
-import { Button } from "@/components/ui/button";
-import "./web-components.css";
-import { ReactNode } from "react";
+import { Button } from "@/components/ui/button"
+import { ReactNode } from "react"
 
-interface ButtonPrimaryProps {
-  children: ReactNode;
+interface ButtonSecondaryProps {
+  children: ReactNode
+  onClick?: () => void
+  isButtonSelected?: boolean
 }
 
-export const ButtonSecondary = ({ children }: ButtonPrimaryProps) => {
+export const ButtonSecondary = ({ children, onClick, isButtonSelected }: ButtonSecondaryProps) => {
   return (
-    <Button id="button-personalized" className="secondary">
+    <Button
+      onClick={onClick}
+      id="button-personalized"
+      className={`secondary ${isButtonSelected ? "button-selected" : ""}`}
+    >
       {children}
     </Button>
-  );
-};
+  )
+}

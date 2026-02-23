@@ -23,3 +23,7 @@
 .card-modalitie-container div {
     border-radius: 10px;
 }
+
+.blur-section {
+    backdrop-filter: blur(100px);
+}

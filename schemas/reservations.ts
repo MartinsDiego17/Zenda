@@ -1,5 +1,6 @@
 import { UUID, Timestamp } from "./common.types";
-import { SessionModality } from "./professional_settings";
+
+export type SessionModalityToUser = "Virtual" | "Presencial" | "";
 
 export type ReservationStatus = "PENDING" | "CONFIRMED" | "CANCELLED";
 
@@ -13,7 +14,7 @@ export interface Reservation {
   end_time: Timestamp;
 
   status: ReservationStatus;
-  session_modality: SessionModality;
+  session_modality: SessionModalityToUser;
 
   created_at: Timestamp;
 }

@@ -1,6 +1,4 @@
 "use client";
-import { FooterCommon } from "../../footer/components/FooterCommon";
-import { HeaderDashboardUser } from "../../header/components/HeaderDashboardUser";
 import { EmptyTurn } from "./EmptyTurn";
 import { CurrentTurn } from "./CurrentTurn";
 import "./dashboard.css"
@@ -12,6 +10,7 @@ import { useReservationsStore } from "@/store/ReservationsStore";
 import { getCurrentReservation } from "../utils/getCurrentReservation";
 import { SkeletonCurrentReservation } from "./SkeletonCurrentReservation";
 import { SkeletonHistoryReservations } from "./SkeletonHistoryReservations";
+import { LayoutDashboardUser } from "./LayoutDashboardUser";
 
 export const DashboardUser = () => {
 
@@ -39,11 +38,14 @@ export const DashboardUser = () => {
         fetchReservations();
     }, [currentSession]);
 
-    return (
-        <div className="dashboard-container flex place-items-center justify-center">
-            <HeaderDashboardUser />
+    const firstName = currentSession ? currentSession.user.user_metadata.full_name.split(" ")[0] : ""
 
-            <div className="dashboard-son flex place-items-center justify-between my-[13vh] w-[70vw] mb-[35vh]  h-[70vh]">
+    return (
+        <LayoutDashboardUser
+            titleSection={`Hola, bienvenido ${firstName}`}
+            subtitleSection="Gestiona tus turnos y revisa tu historial de sesiones"
+        >
+            <div className="flex justify-between h-full w-full max-h-screen">
 
                 {
                     currentSession
@@ -68,13 +70,8 @@ export const DashboardUser = () => {
                             </>
                         )
                 }
-
-
-
             </div>
-
-            <FooterCommon />
-
-        </div>
+        </LayoutDashboardUser>
     );
 };
+

@@ -4,8 +4,8 @@ import { CalendarIcon } from "lucide-react";
 
 export const EmptyTurn = () => {
     return (
-        <div className="empty-turn-container w-[30%] h-full flex flex-col place-items-center">
-            <h2 className="text-(--color-primary-text) text-2xl text-center mb-10">
+        <div className="empty-turn-container w-[30%] h-fit flex flex-col place-items-center">
+            <h2 className="font-extrabold text-(--color-primary-text)  text-center mb-10">
                 No tienes turnos vigentes
             </h2>
             <Link href={"/dashboard/reserve"}>

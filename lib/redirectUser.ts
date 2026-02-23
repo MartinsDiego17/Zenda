@@ -1,18 +1,39 @@
 "use client";
-import { useEffect } from "react"
-import { useRouter } from "next/navigation"
-import { useAuthStore } from "@/store/AuthStore"
 
-export const useRedirectUser = (path = "/dashboard") => {
-  const session = useAuthStore(state => state.session)
-  const router = useRouter()
+import { useEffect } from "react";
+import { useRouter, usePathname } from "next/navigation";
+import { useAuthStore } from "@/store/AuthStore";
+import { PropsFetchAdminUser } from "@/schemas/responseFetchAdminUser";
 
-  const current_path = window.location.pathname;
+export const useRedirectUser = (redirectTo = "/dashboard") => {
+  const getAdminUser = useAuthStore((state) => state.getAdminUser);
+  const session = useAuthStore((state) => state.session);
+
+  const router = useRouter();
+  const pathname = usePathname();
 
   useEffect(() => {
-    if (current_path === "/dashboard" && !session) return router.replace("/");
-    if (session) {
-      return router.replace(path)
-    }
-  }, [session, path, router])
-}
+    const handleRedirect = async () => {
+      // Usuario no logueado intentando entrar al dashboard
+      if (!session && pathname.startsWith("/dashboard")) {
+        router.replace("/");
+        return;
+      }
+
+      // Usuario logueado en home
+      if (session && pathname === "/") {
+        router.replace(redirectTo);
+        return;
+      }
+
+      if (session) {
+        const userId = session.user.id;
+        const response = await getAdminUser({ adminUserId: userId });
+
+        if (response?.role === "ADMIN") router.replace("/dashboard/admin");
+      }
+    };
+
+    handleRedirect();
+  }, [session, pathname, redirectTo, router, getAdminUser]);
+};

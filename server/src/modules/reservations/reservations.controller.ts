@@ -1,15 +1,52 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, HttpException, HttpStatus } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, HttpException, HttpStatus, Query } from '@nestjs/common';
 import { ReservationsService } from './reservations.service';
-import { CreateReservationDto } from './dto/create-reservation.dto';
 import { UpdateReservationDto } from './dto/update-reservation.dto';
+import { extractPaymentId } from './utils/extractPaymentId';
+import { ProfessionalSettingsService } from '../professional-settings/professional-settings.service';
 
 @Controller('reservations')
 export class ReservationsController {
-  constructor(private readonly reservationsService: ReservationsService) { }
 
-  @Post()
-  create(@Body() createReservationDto: CreateReservationDto) {
-    return this.reservationsService.create(createReservationDto);
+  constructor(
+    private readonly reservationsService: ReservationsService,
+    private readonly professionalSettingsxService: ProfessionalSettingsService
+  ) { }
+
+  @Post('/create-without-payment')
+  async createReservationWithoutPayment(@Body() infoPayment) {
+    const responseSettings = await this.professionalSettingsxService.get();
+    const objectReturn: any = {
+      data: {},
+      status: 1
+    }
+    if (responseSettings.data) {
+      const requiresDeposit = responseSettings.data[0].requires_deposit;
+      if (!requiresDeposit) {
+        const data = await this.reservationsService.createReservationWithoutPayment(infoPayment);
+        objectReturn.data = data;
+        objectReturn.status = 200;
+      }
+    }
+    return objectReturn;
+  }
+
+
+  @Post('/create-with-payment')
+  async createReservationWithPayment(@Body() infoPayment) {
+
+    const paymentId = extractPaymentId(infoPayment);
+    if (!paymentId) return { status: 200 };
+
+    const data = await this.reservationsService.createReservationWithPayment(infoPayment);
+    return {
+      data,
+      status: 200
+    }
+  }
+
+  @Post('/payment')
+  async createPreference(@Body() infoReservation) {
+    return this.reservationsService.createPreference({ infoReservation });
   }
 
   @Get()
@@ -38,6 +75,15 @@ export class ReservationsController {
     }
   }
 
+  @Get('/availability')
+  async getAvailability(
+    @Query('date') date: string,
+    @Query('professional_id') professional_id: string,
+  ) {
+    return this.reservationsService.getAvailability(date, professional_id);
+  }
+
+
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.reservationsService.findOne(+id);
@@ -52,4 +98,5 @@ export class ReservationsController {
   remove(@Param('id') id: string) {
     return this.reservationsService.remove(+id);
   }
+
 }

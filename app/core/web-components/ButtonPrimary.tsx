@@ -5,11 +5,12 @@ import { ReactNode } from "react";
 interface ButtonPrimaryProps {
   children: ReactNode;
   handler?: () => void
+  disabled?: boolean
 }
 
-export const ButtonPrimary = ({ children, handler }: ButtonPrimaryProps) => {
+export const ButtonPrimary = ({ children, handler, disabled=false }: ButtonPrimaryProps) => {
   return (
-    <Button onClick={handler} id="button-personalized" className="primary">
+    <Button disabled={disabled} onClick={handler} id="button-personalized" className="primary">
       {children}
     </Button>
   );

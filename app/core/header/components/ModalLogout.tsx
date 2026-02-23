@@ -24,8 +24,8 @@ export const ModalLogout = ({ handler }: ModalLogoutProps) => {
 
             <AlertDialogTrigger asChild>
                 <Button id="button-personalized" className="primary">
-                    <span>Cerrar sesión</span>
                     <span><LogOut /></span>
+                    <span>Cerrar sesión</span>
                 </Button>
             </AlertDialogTrigger>
 
