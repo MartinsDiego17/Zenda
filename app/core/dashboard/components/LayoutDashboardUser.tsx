@@ -1,6 +1,6 @@
 "use client";
 import { ArrowLeft } from "lucide-react";
-import { HeaderDashboardUser } from "../../header/components/HeaderDashboardUser";
+import { HeaderDashboard } from "../../header/components/HeaderDashboard";
 import Link from "next/link";
 
 interface props {
@@ -14,7 +14,7 @@ interface props {
 export const LayoutDashboardUser = ({ children, route, routeBack, titleSection, subtitleSection }: props) => {
     return (
         <div className="bg-white h-screen max-h-screen overflow-hidden w-screen dashboard-container flex place-items-center justify-center">
-            <HeaderDashboardUser />
+            <HeaderDashboard />
 
             <div className="dashboard-son w-[70vw]  h-[75vh]">
                 {

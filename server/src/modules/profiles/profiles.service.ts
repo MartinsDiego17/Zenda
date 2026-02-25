@@ -19,12 +19,12 @@ export class ProfilesService {
     return `This action returns all profiles`;
   }
 
-  async findOne({ adminUserId }: { adminUserId: string }) {
+  async findOne({ userId }: { userId: string }) {
     const { data, error } = await this.supabaseService
       .getClient()
       .from('profiles')
       .select('*')
-      .eq('id', adminUserId);
+      .eq('id', userId);
 
     if (error) {
       throw new Error(error.message);

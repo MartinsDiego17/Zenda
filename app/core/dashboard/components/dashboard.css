@@ -9,7 +9,8 @@
     padding-bottom: 50px;
 }
 
-.dashboard-container .currentTurn-container {
+.dashboard-container .currentTurn-container,
+.dashboard-container .empty-turn-container {
     border-top: solid 4px var(--color-primary);
 }
 

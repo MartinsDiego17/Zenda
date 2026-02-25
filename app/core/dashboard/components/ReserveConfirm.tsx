@@ -15,7 +15,7 @@ import { createReservation } from "../utils/createReservation";
 export const ReserveConfirm = () => {
 
     const currentReservation = useReservationsStore(state => state.currentReservation);
-    const currentGetAdminUser = useAuthStore(state => state.getAdminUser);
+    const currentFindOneUser = useAuthStore(state => state.findOneUser);
     const currentProfessionalSettings = useProfessionalSettingsStore(state => state.professional_settings);
 
     const localFormattedReservationData = getFormattedDataCurrentReservation(currentReservation);
@@ -26,13 +26,13 @@ export const ReserveConfirm = () => {
     useEffect(() => {
         if (currentProfessionalSettings) {
             const fetchUserAdmin = async () => {
-                const data = await currentGetAdminUser({ adminUserId: currentProfessionalSettings.user_id });
+                const data = await currentFindOneUser({ userId: currentProfessionalSettings.user_id });
                 setLocalCurrentUserAdmin(data);
             }
             fetchUserAdmin();
 
         }
-    }, [currentProfessionalSettings, currentGetAdminUser, currentReservation]);
+    }, [currentProfessionalSettings, currentFindOneUser, currentReservation]);
 
     const hasCreatedReservation = useRef(false);
 

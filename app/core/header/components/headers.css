@@ -24,11 +24,16 @@
 }
 
 #header-visitor .log-out #button-personalized {
+    width: fit-content;
     color: var(--color-error);
     font-weight: 700;
     border: solid 1px var(--color-error-muted);
     background-color: transparent;
     box-shadow: none;
+    &:hover {
+        border-color: red;
+        background-color: var(--color-error-muted-secondary);
+    }
 }
 
 .button-confirm-modal-logout {
@@ -44,3 +49,4 @@ header button {
     border-radius: 100px;
     cursor: pointer;
 }
+

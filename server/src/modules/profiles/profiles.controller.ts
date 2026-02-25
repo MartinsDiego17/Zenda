@@ -19,7 +19,7 @@ export class ProfilesController {
 
   @Get(':id')
   async findOne(@Param('id') id: string) {
-    return this.profilesService.findOne({ adminUserId: id });
+    return this.profilesService.findOne({ userId: id });
   }
 
   @Patch(':id')

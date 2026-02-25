@@ -3,10 +3,9 @@
 import { useEffect } from "react";
 import { useRouter, usePathname } from "next/navigation";
 import { useAuthStore } from "@/store/AuthStore";
-import { PropsFetchAdminUser } from "@/schemas/responseFetchAdminUser";
 
 export const useRedirectUser = (redirectTo = "/dashboard") => {
-  const getAdminUser = useAuthStore((state) => state.getAdminUser);
+  const findOneUser = useAuthStore((state) => state.findOneUser);
   const session = useAuthStore((state) => state.session);
 
   const router = useRouter();
@@ -28,12 +27,16 @@ export const useRedirectUser = (redirectTo = "/dashboard") => {
 
       if (session) {
         const userId = session.user.id;
-        const response = await getAdminUser({ adminUserId: userId });
+        const response = await findOneUser({ userId });
 
-        if (response?.role === "ADMIN") router.replace("/dashboard/admin");
+        if (response?.role === "ADMIN") {
+          if (pathname.startsWith("/admin/dashboard")) return
+          router.replace("/admin/dashboard")
+        }
       }
+
     };
 
     handleRedirect();
-  }, [session, pathname, redirectTo, router, getAdminUser]);
+  }, [session, pathname, redirectTo, router, findOneUser]);
 };

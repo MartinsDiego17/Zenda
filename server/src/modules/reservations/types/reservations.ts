@@ -1,5 +1,5 @@
 
-export type SessionModalityToUser = "VIRTUAL" | "PRESENTIAL" | "";
+export type SessionModalityToUser = "Virtual" | "Presencial" | "";
 
 export type ReservationStatus = "PENDING" | "CONFIRMED" | "CANCELLED";
 

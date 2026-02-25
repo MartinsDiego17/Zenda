@@ -6,17 +6,17 @@ import { serverConfig } from '@/lib/serverConfig'
 import axios from 'axios'
 
 interface AuthStore {
-  adminUser: Profile | null,
+  user: Profile | null,
   session: Session | null
-  setSessionFromSupabase: () => Promise<void>
+  setSessionFromSupabase: () => Promise<Session | null | undefined>
   loginWithGoogle: () => Promise<void>
   logout: () => Promise<void>
-  getAdminUser: ({ adminUserId }: { adminUserId: string }) => Promise<Profile | null>
+  findOneUser: ({ userId }: { userId: string }) => Promise<Profile | null>
 }
 
 export const useAuthStore = create<AuthStore>((set) => ({
 
-  adminUser: null,
+  user: null,
   session: null,
   setSessionFromSupabase: async () => {
     const { data, error } = await supabaseClient.auth.getSession()
@@ -26,8 +26,8 @@ export const useAuthStore = create<AuthStore>((set) => ({
       set({ session: null })
       return
     }
-
     set({ session: data.session })
+    return data.session;
   },
   loginWithGoogle: async () => {
     const { error } = await supabaseClient.auth.signInWithOAuth({
@@ -49,11 +49,12 @@ export const useAuthStore = create<AuthStore>((set) => ({
       return
     }
 
+    window.location.href = "/";
     set({ session: null })
   },
-  getAdminUser: async ({ adminUserId }: { adminUserId: string }) => {
+  findOneUser: async ({ userId }: { userId: string }) => {
 
-    const localUrl = serverConfig.profile.findOne({ adminUserId });
+    const localUrl = serverConfig.profile.findOne({ userId });
 
     try {
       const { data } = await axios(localUrl);

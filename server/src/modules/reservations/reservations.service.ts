@@ -28,7 +28,6 @@ export class ReservationsService {
       .single();
     return responseReservation;
   }
-
   async createReservationWithPayment(infoPayment) {
 
     const localSupabaseClient = await this.supabaseService.getClient();
@@ -69,7 +68,6 @@ export class ReservationsService {
 
     return payment;
   }
-
   async createPreference({ infoReservation }: { infoReservation: CreateReservationDto }) {
     const preference = await new Preference(this.mercadoPago.getMercadoPago() as any).create({
       body: {
@@ -87,12 +85,10 @@ export class ReservationsService {
     })
     return { data: preference.init_point }
   }
-
   async findAll() {
     const { data } = await this.supabaseService.getClient().from('reservations').select('*');
     return data;
   }
-
   async findAllByUser({ client_id }: { client_id: string }) {
     const { data, error } = await this.supabaseService
       .getClient()
@@ -105,7 +101,18 @@ export class ReservationsService {
 
     return data;
   }
+  async findAllByProfessional({ professionalId }: { professionalId: string }) {
+    const { data, error } = await this.supabaseService
+      .getClient()
+      .from('reservations')
+      .select('*')
+      .eq('professional_id', professionalId);
+    if (error) {
+      throw new Error(error.message);
+    }
 
+    return data;
+  }
   async getAvailability(date: string, professionalId: string) {
 
     const day = date.split(" ")[0];
@@ -134,8 +141,17 @@ export class ReservationsService {
     };
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} reservation`;
+  async findOne({ reservationId }: { reservationId: string }) {
+    const { data, error } = await this.supabaseService
+      .getClient()
+      .from('reservations')
+      .select('*')
+      .eq('id', reservationId);
+    if (error) {
+      throw new Error(error.message);
+    }
+
+    return data;
   }
 
   update(id: number, updateReservationDto: UpdateReservationDto) {

@@ -52,7 +52,7 @@ export const DashboardUser = () => {
                         ? (
                             <>
                                 {
-                                    !currentReservation
+                                !currentReservation
                                         ? (
                                             <EmptyTurn />
                                         )

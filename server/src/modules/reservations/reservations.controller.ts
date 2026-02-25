@@ -29,8 +29,6 @@ export class ReservationsController {
     }
     return objectReturn;
   }
-
-
   @Post('/create-with-payment')
   async createReservationWithPayment(@Body() infoPayment) {
 
@@ -43,12 +41,10 @@ export class ReservationsController {
       status: 200
     }
   }
-
   @Post('/payment')
   async createPreference(@Body() infoReservation) {
     return this.reservationsService.createPreference({ infoReservation });
   }
-
   @Get()
   async findAll() {
     try {
@@ -74,6 +70,18 @@ export class ReservationsController {
       throw new HttpException(error, HttpStatus.BAD_REQUEST);
     }
   }
+  @Get('/professional/:professionalId')
+  async findAllByProfessional(@Param('professionalId') professionalId: string) {
+    try {
+      return {
+        status: 200,
+        data: await this.reservationsService.findAllByProfessional({ professionalId }),
+        message: `SOLICITASTE TODAS LAS RESERVAS DEL PROFESIONAL CON EL ID: ${professionalId} EXITOSAMENTE`
+      }
+    } catch (error) {
+      throw new HttpException(error, HttpStatus.BAD_REQUEST);
+    }
+  }
 
   @Get('/availability')
   async getAvailability(
@@ -83,10 +91,10 @@ export class ReservationsController {
     return this.reservationsService.getAvailability(date, professional_id);
   }
 
-
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.reservationsService.findOne(+id);
+  async findOne(@Param('id') reservationId: string) {
+
+    return await this.reservationsService.findOne({ reservationId });
   }
 
   @Patch(':id')

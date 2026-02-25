@@ -19,7 +19,7 @@ export const ReservePayment = () => {
 
     const currentProfessionalSettings = useProfessionalSettingsStore(state => state.professional_settings);
     const currentReservation = useReservationsStore(state => state.currentReservation);
-    const currentGetAdminUser = useAuthStore(state => state.getAdminUser);
+    const currentFindOneUser = useAuthStore(state => state.findOneUser);
     const [localCurrentUserAdmin, setLocalCurrentUserAdmin] = useState<Profile | null>();
 
     useRedirectUserConfirmationPayment({ reservation: currentReservation });
@@ -27,14 +27,14 @@ export const ReservePayment = () => {
     useEffect(() => {
         if (currentProfessionalSettings) {
             const fetchUserAdmin = async () => {
-                const data = await currentGetAdminUser({ adminUserId: currentProfessionalSettings.user_id });
+                const data = await currentFindOneUser({ userId: currentProfessionalSettings.user_id });
                 setLocalCurrentUserAdmin(data);
             }
 
             fetchUserAdmin();
 
         }
-    }, [currentProfessionalSettings, currentGetAdminUser, currentReservation]);
+    }, [currentProfessionalSettings, currentFindOneUser, currentReservation]);
 
     const localReservation: FormattedReservationProps | null = getFormattedDataCurrentReservation(currentReservation)
 

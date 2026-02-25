@@ -1,6 +1,6 @@
 import { UUID, Timestamp } from "./common.types";
 
-export type SessionModalityToUser = "VIRTUAL" | "PRESENTIAL" | "";
+export type SessionModalityToUser = "Virtual" | "Presencial" | "";
 
 export type ReservationStatus = "PENDING" | "CONFIRMED" | "CANCELLED";
 

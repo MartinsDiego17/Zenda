@@ -6,9 +6,7 @@ export interface FormattedReservationProps {
   formattedSessionModality: string
 }
 
-export const getFormattedDataCurrentReservation = (
-  reservation: Reservation | null
-): FormattedReservationProps | null => {
+export const getFormattedDataCurrentReservation = (reservation: Reservation | null): FormattedReservationProps | null => {
   if (!reservation) return null
 
   const startDate = new Date(reservation.start_time.replace(" ", "T"))
@@ -29,9 +27,9 @@ export const getFormattedDataCurrentReservation = (
     }) + "hs"
 
   const formattedSessionModality =
-    reservation.session_modality === "VIRTUAL"
+    reservation.session_modality === "Virtual"
       ? "Virtual"
-      : reservation.session_modality === "PRESENTIAL"
+      : reservation.session_modality === "Presencial"
         ? "Presencial"
         : reservation.session_modality
 
