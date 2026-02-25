@@ -19,8 +19,6 @@ export const getCalendarSchedule = async (): Promise<PropsCalendarSchedule> => {
     const settings = data.data[0];
 
     const { work_start_time, work_end_time } = settings;
-    console.log("START: ", work_start_time);
-    console.log("END: ", work_end_time);
 
     return {
       min: timeStringToDate(work_start_time),

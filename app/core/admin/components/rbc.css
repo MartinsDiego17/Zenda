@@ -188,3 +188,14 @@ button.rbc-active:active {
     background-color: var(--color-primary-transparent);
     border-radius: 5px;
 }
+
+.event-type-bloqueo-manual {
+    background-color: var(--color-error-muted) !important;
+    color: var(--color-error);
+    border-color: var(--color-error) !important;
+
+}
+
+.manual-block {
+    color: var(--color-error);
+}

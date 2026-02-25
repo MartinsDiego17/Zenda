@@ -6,12 +6,12 @@ export interface InterfaceEventProps {
 }
 
 
-export const getCalendarEvents = ({ reservations, }: { reservations: Reservation[]; }): InterfaceEventProps[] => {
+export const getCalendarEvents = ({ reservations, professionalId, }: { reservations: Reservation[], professionalId: string }): InterfaceEventProps[] => {
         
     return reservations.map((reservation) => ({
         start: new Date(reservation.start_time),
         end: new Date(reservation.end_time),
-        title: "Sesión",
+        title: reservation.client_id !== professionalId ? "Sesión" : "Bloqueo manual",
     }));
 
 };

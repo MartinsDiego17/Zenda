@@ -19,7 +19,6 @@ export const ReserveDetail = () => {
     const [localUser, setLocalUser] = useState<Profile | null>();
 
     useEffect(() => {
-        if(!id) console.log("HOLAA")
         const fetchReservation = async () => {
             const localReservation: Reservation = await getCurrentReservation({ reservationId: id });
             const userFound = await currentFindOneUser({ userId: localReservation.client_id });
