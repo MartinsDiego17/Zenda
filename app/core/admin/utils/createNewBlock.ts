@@ -1,4 +1,3 @@
-import { serverConfig } from "@/lib/serverConfig";
 import { NewReservation } from "@/schemas/newReservation";
 import { createReservation } from "../../dashboard/utils/createReservation";
 
@@ -14,19 +13,15 @@ interface Props {
 export const createNewBlock = async ({ block, professionalId }: Props) => {
   const { date, start, end } = block;
 
-  const start_time = new Date(`${date}T${start}:00`).toISOString();
-  const end_time = new Date(`${date}T${end}:00`).toISOString();
-
-  const reservation  : NewReservation = {
+  const reservation: NewReservation = {
     client_id: professionalId,
     professional_id: professionalId,
-    start_time,
-    end_time,
-    status: "CONFIRMED" as const,
-    session_modality: "Virtual" as const,
+    start_time: `${date}T${start}:00`,
+    end_time: `${date}T${end}:00`,
+    status: "CONFIRMED",
+    session_modality: "Virtual",
   };
 
   const reservationCreated = await createReservation({ newReservation: reservation });
-
-  return reservation;
+  return reservationCreated;
 };

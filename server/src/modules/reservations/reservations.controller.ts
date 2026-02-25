@@ -21,7 +21,9 @@ export class ReservationsController {
     }
     if (responseSettings.data) {
       const requiresDeposit = responseSettings.data[0].requires_deposit;
-      if (!requiresDeposit) {
+      const { client_id, professional_id } = infoPayment;
+      const isManualBlock = client_id === professional_id;
+      if (!requiresDeposit || isManualBlock) {
         const data = await this.reservationsService.createReservationWithoutPayment(infoPayment);
         objectReturn.data = data;
         objectReturn.status = 200;
@@ -103,8 +105,12 @@ export class ReservationsController {
   }
 
   @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.reservationsService.remove(+id);
+  async remove(@Param('id') id: string) {
+    const data = await this.reservationsService.remove(id);
+    return {
+      data,
+      status: 200
+    }
   }
 
 }

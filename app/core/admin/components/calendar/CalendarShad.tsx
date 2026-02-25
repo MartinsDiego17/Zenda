@@ -1,6 +1,6 @@
 "use client"
-import * as React from "react"
 import { Calendar } from "@/components/ui/calendar"
+import { es } from "date-fns/locale"
 
 interface CalendarShadProps {
   date: Date
@@ -10,6 +10,7 @@ interface CalendarShadProps {
 export const CalendarShad = ({ date, onSelectDate }: CalendarShadProps) => {
   return (
     <Calendar
+      locale={es}
       mode="single"
       selected={date}
       onSelect={(selectedDate) => {
@@ -17,7 +18,8 @@ export const CalendarShad = ({ date, onSelectDate }: CalendarShadProps) => {
           onSelectDate(selectedDate)
         }
       }}
-      className="rounded-lg border w-full"
+      id="calendar-shadcn-accesorie"
+      className="rounded-[15px] bg-transparent w-full"
       captionLayout="dropdown"
     />
   )

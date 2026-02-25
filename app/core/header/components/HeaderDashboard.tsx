@@ -19,7 +19,7 @@ export const HeaderDashboard = ({ isUserAdmin = false }: props) => {
     return (
         <header id="header-visitor" className="border-b header-visitor-container w-screen flex justify-center place-items-center py-5">
             <div className="w-[70vw] flex place-items-center justify-between">
-                <Logo />
+                <Logo route={isUserAdmin ? "" : ""} />
 
                 <span className="log-out flex place-items-center gap-x-4">
                 {

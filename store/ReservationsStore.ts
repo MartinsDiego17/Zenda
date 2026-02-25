@@ -15,6 +15,7 @@ interface ReservationsStore {
     getReservations: (params: { client_id: string }) => Promise<Reservation[]>;
     setCurrentReservation: (reservation: Reservation) => setCurrentReservationResponse
     getAllReservations: (params: { professionalId: string }) => Promise<Reservation[]>;
+    deleteReservation: ({ reservationId } : { reservationId: string }) => void;
 }
 
 export const useReservationsStore = create<ReservationsStore>((set) => ({
@@ -71,6 +72,15 @@ export const useReservationsStore = create<ReservationsStore>((set) => ({
         } catch (error) {
             set({ reservations: [] })
             throw new Error;
+        }
+    },
+    deleteReservation: async ({ reservationId } : { reservationId: string }) => {
+        const localUrl = `${serverConfig.reservations.common}/${reservationId}`;
+
+        try {
+            await axios.delete(localUrl);
+        } catch (error) {
+            return error;   
         }
     }
 

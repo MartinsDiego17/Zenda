@@ -12,6 +12,7 @@ import { getEndTimeReservation } from "../utils/getEndTimeReservation"
 import { useReservationsStore } from "@/store/ReservationsStore"
 import { useRouter } from "next/navigation"
 import { getAvailabilityesReservations } from "../utils/getAvailabilitysReservations"
+import { AdminBlock, getAdminBlocks } from "../utils/getAdminBlocks"
 
 export const ReserveUser = () => {
   const debounceRef = useRef<NodeJS.Timeout | null>(null)
@@ -19,7 +20,6 @@ export const ReserveUser = () => {
   const [slots, setSlots] = useState<string[]>([])
   const [selectedDate, setSelectedDate] = useState<Date | undefined>()
   const [selectedTime, setSelectedTime] = useState<string>("")
-
   const [localReservation, setLocalReservation] = useState<Reservation>({
     id: "",
     client_id: "",
@@ -30,13 +30,11 @@ export const ReserveUser = () => {
     session_modality: "",
     created_at: "",
   })
-
+  const [adminBlocks, setAdminBlocks] = useState<AdminBlock[]>();
   const router = useRouter()
-
   const setCurrentReservation = useReservationsStore(
     (state) => state.setCurrentReservation
   )
-
   const getProfessionalSettings = useProfessionalSettingsStore(
     (state) => state.getProfessionalSettings
   )
@@ -123,6 +121,19 @@ export const ReserveUser = () => {
     effectiveSessionModality.length
   )
 
+  useEffect(() => {
+
+    const fetchAdminBlocks = async () => {
+      if (currentProfessionalSettings?.user_id) {
+        const data = await getAdminBlocks({ professionalId: currentProfessionalSettings?.user_id || "" });
+        if(data.length) setAdminBlocks(data);
+      }
+    };
+
+    fetchAdminBlocks();
+
+  }, [currentProfessionalSettings]);
+
   return (
     <>
       <section className="w-full max-h-screen flex justify-between  gap-x-10">
@@ -134,6 +145,7 @@ export const ReserveUser = () => {
             date={selectedDate}
             currentProfessionalSettings={currentProfessionalSettings}
             occupiedSlots={slots}
+            adminBlocks={adminBlocks}
           />
         </article>
 

@@ -81,3 +81,14 @@
     border-radius: 15px;
     padding: 20px;
 }
+
+#calendar-shadcn-accesorie {
+    box-shadow: 0px 0px 5px #ccc;
+}
+
+
+.history-reservations-container {
+    border-radius: 15px;
+    box-shadow: 0px 0px 5px #ccc;
+    padding: 20px;
+}

@@ -140,7 +140,6 @@ export class ReservationsService {
       occupiedSlots: finalSlots,
     };
   }
-
   async findOne({ reservationId }: { reservationId: string }) {
     const { data, error } = await this.supabaseService
       .getClient()
@@ -158,9 +157,18 @@ export class ReservationsService {
     return `This action updates a #${id} reservation`;
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} reservation`;
+  async remove(id: string) {
+    const { data, error } = await this.supabaseService
+      .getClient()
+      .from("reservations")
+      .delete()
+      .eq("id", id)
+      .select();
+
+    if (error) {
+      throw error;
+    }
+
+    return data;
   }
-
-
 }

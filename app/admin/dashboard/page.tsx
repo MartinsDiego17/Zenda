@@ -1,4 +1,4 @@
-import { DashboardAdmin } from "@/app/core/admin/components/DashboardAdmin"
+import { DashboardAdmin } from "@/app/core/admin/components/home/DashboardAdmin"
 
 export const metadata = {
     title: 'Panel de administración',
@@ -7,6 +7,6 @@ export const metadata = {
 export default function Dashboard() {
 
     return (
-            <DashboardAdmin />
+        <DashboardAdmin />
     )
 }

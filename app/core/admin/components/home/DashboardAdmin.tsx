@@ -1,27 +1,30 @@
 "use client";
 import { useEffect, useState } from "react";
-import { LayoutDashboardAdmin } from "./LayoutAdminDashboard";
+import { LayoutDashboardAdmin } from "../LayoutAdminDashboard";
 import { useAuthStore } from "@/store/AuthStore";
 import { useReservationsStore } from "@/store/ReservationsStore";
 import { Reservation } from "@/schemas/reservations";
 import { CardNextReservation } from "./CardNextReservation";
-import { getDateInfo } from "../../dashboard/utils/getDateInfo";
+import { getDateInfo } from "../../../dashboard/utils/getDateInfo";
 import Link from "next/link";
 import { ButtonViewMore } from "./ButtonViewMore";
 import { CardStateCalendar } from "./CardStateCalendar";
-import { QUICK_LINKS } from "../utils/quickLinks";
+import { QUICK_LINKS } from "../../utils/quickLinks";
 import { CardQuickAccess } from "./CardQuickAccess";
-import { getInfoTurns } from "../utils/getInfoTurns";
+import { getInfoTurns } from "../../utils/getInfoTurns";
 
 export const DashboardAdmin = () => {
 
     const [allReservations, setAllReservations] = useState<Reservation[]>([]);
     const currentSession = useAuthStore(state => state.session);
     const currentGetAllReservations = useReservationsStore(state => state.getAllReservations);
-    const [infoTurns, setInfoTurns] = useState({
-        turnsToday: 0,
-        turnsConfirm: 0
-    })
+    const [cleanReservations, setCleanReservations] = useState(
+        {
+            turnsToday: 0,
+            turnsConfirm: 0,
+            totalTurns: 0
+        }
+    );
 
     useEffect(() => {
         if (!currentSession) return;
@@ -31,10 +34,11 @@ export const DashboardAdmin = () => {
             const localReservations = await currentGetAllReservations({ professionalId });
             setAllReservations(localReservations);
 
-            const { turnsToday, turnsConfirm } = getInfoTurns({ reservations: localReservations });
-            setInfoTurns({
+            const { turnsToday, turnsConfirm, totalTurns } = getInfoTurns({ reservations: localReservations, professionalId });
+            setCleanReservations({
                 turnsToday,
-                turnsConfirm
+                turnsConfirm,
+                totalTurns
             })
 
             if (!localReservations.length) {
@@ -97,9 +101,9 @@ export const DashboardAdmin = () => {
                     <div className="small-card-admin">
                         <h3 className="font-extrabold mb-3">Estado de la agenda</h3>
                         <div className="flex flex-col gap-y-2">
-                            <CardStateCalendar title="Turnos hoy" quantityTurns={infoTurns.turnsToday} />
-                            <CardStateCalendar title="Turnos confirmados" quantityTurns={infoTurns.turnsConfirm} />
-                            <CardStateCalendar title="Total de turnos" quantityTurns={allReservations.length} />
+                            <CardStateCalendar title="Turnos hoy" quantityTurns={cleanReservations.turnsToday} />
+                            <CardStateCalendar title="Turnos confirmados" quantityTurns={cleanReservations.turnsConfirm} />
+                            <CardStateCalendar title="Total de turnos" quantityTurns={cleanReservations.totalTurns} />
                         </div>
                         <div className="flex justify-end mt-4"><ButtonViewMore text="Ver agenda completa" route="/admin/dashboard/calendar" /></div>
                     </div>

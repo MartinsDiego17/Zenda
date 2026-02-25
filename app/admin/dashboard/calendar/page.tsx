@@ -1,4 +1,4 @@
-import { CalendarAdmin } from "@/app/core/admin/components/CalendarAdmin";
+import { CalendarAdmin } from "@/app/core/admin/components/calendar/CalendarAdmin";
 import { LayoutDashboardAdmin } from "@/app/core/admin/components/LayoutAdminDashboard";
 
 export const metadata = {
