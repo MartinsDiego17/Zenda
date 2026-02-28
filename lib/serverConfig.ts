@@ -1,3 +1,4 @@
+import { Reservation } from "@/schemas/reservations";
 
 const enviroment = process.env;
 const serverUrl = enviroment.NEXT_PUBLIC_SERVER_URL;
@@ -12,12 +13,14 @@ export const serverConfig = {
         },
         getPayment: `${serverUrl}/reservations/payment`,
         create: `${serverUrl}/reservations/create-without-payment`,
-        findOne: ({ reservationId } : { reservationId: string }) => { return `${serverUrl}/reservations/${reservationId}`}
+        findOne: ({ reservationId }: { reservationId: string }) => { return `${serverUrl}/reservations/${reservationId}` },
+        getByUsers: `${serverUrl}/reservations/by-users`
     },
     professionalSettings: {
         get: `${serverUrl}/professional-settings`
     },
     profile: {
-        findOne: ({ userId }: { userId: string }) => { return `${serverUrl}/profiles/${userId}` }
+        findOne: ({ userId }: { userId: string }) => { return `${serverUrl}/profiles/${userId}` },
+        findAll: `${serverUrl}/profiles`
     }
 }

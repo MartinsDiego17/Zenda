@@ -1,5 +1,5 @@
+import { ReserveDetail } from "@/app/core/admin/components/detail/ReserveDetail";
 import { LayoutDashboardAdmin } from "@/app/core/admin/components/LayoutAdminDashboard";
-import { ReserveDetail } from "@/app/core/admin/components/ReserveDetail";
 
 export const metadata = {
     title: "Detalle de reserva",

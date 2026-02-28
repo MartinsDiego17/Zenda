@@ -12,12 +12,15 @@ import { CardStateCalendar } from "./CardStateCalendar";
 import { QUICK_LINKS } from "../../utils/quickLinks";
 import { CardQuickAccess } from "./CardQuickAccess";
 import { getInfoTurns } from "../../utils/getInfoTurns";
+import { useProfessionalSettingsStore } from "@/store/ProfessionalSettingsStore";
 
 export const DashboardAdmin = () => {
 
     const [allReservations, setAllReservations] = useState<Reservation[]>([]);
     const currentSession = useAuthStore(state => state.session);
     const currentGetAllReservations = useReservationsStore(state => state.getAllReservations);
+    const currentGetProfessionalSettings = useProfessionalSettingsStore(state => state.getProfessionalSettings);
+
     const [cleanReservations, setCleanReservations] = useState(
         {
             turnsToday: 0,
@@ -25,6 +28,10 @@ export const DashboardAdmin = () => {
             totalTurns: 0
         }
     );
+
+    useEffect(() => {
+        currentGetProfessionalSettings();
+    }, []);
 
     useEffect(() => {
         if (!currentSession) return;

@@ -29,6 +29,7 @@ export const CalendarAdmin = () => {
     const setSession = useAuthStore(s => s.setSessionFromSupabase);
     const session = useAuthStore(s => s.session);
     const currentGetProfessionalSettings = useProfessionalSettingsStore(state => state.getProfessionalSettings);
+    const settings = useProfessionalSettingsStore(state => state.professional_settings);
     const [sessionMinutesDuration, setSessionMinutesDuration] = useState(45);
 
     const [date, setDate] = useState<Date>(new Date());
@@ -133,21 +134,25 @@ export const CalendarAdmin = () => {
 
     useEffect(() => {
         const fetchSettings = async () => {
-            const data = await currentGetProfessionalSettings();
-            setSessionMinutesDuration(data.session_duration_minutes);
+            let finalSettings = settings;
+            if (!finalSettings) {
+                const data = await currentGetProfessionalSettings();
+                finalSettings = data;
+            }
+            setSessionMinutesDuration(finalSettings.session_duration_minutes);
         }
         fetchSettings();
-    }, []);
+    }, [settings]);
 
-const openBlockDialog = () => {
-    const selected = dayjs(date);
-    const tomorrow = dayjs().add(1, "day").startOf("day");
-    const defaultDate = selected.isBefore(tomorrow) ? tomorrow : selected;
-    setBlockDate(defaultDate.format("YYYY-MM-DD"));
-    setBlockStartTime("");
-    setBlockEndTime("");
-    setBlockDialogOpen(true);
-};
+    const openBlockDialog = () => {
+        const selected = dayjs(date);
+        const tomorrow = dayjs().add(1, "day").startOf("day");
+        const defaultDate = selected.isBefore(tomorrow) ? tomorrow : selected;
+        setBlockDate(defaultDate.format("YYYY-MM-DD"));
+        setBlockStartTime("");
+        setBlockEndTime("");
+        setBlockDialogOpen(true);
+    };
 
     const handleBlockSubmit = async () => {
         if (hasOverlap(blockStartTime, blockEndTime)) {

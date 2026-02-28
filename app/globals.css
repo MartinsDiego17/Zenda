@@ -42,19 +42,18 @@
 :root {
     --color-primary: #00BE97;
     --color-primary-hover: #00A884;
-    --color-secondary: #4C00FF;
-    --background: #e2fff6;
-    --color-border: #cfd1d4;
     --color-text-primary: #1F2937;
     --color-text-secondary: #6B7280;
-    --color-success: #22C55E;
-    --color-error: #EF4444;
-    --color-error-muted: #ec161663;
-    --color-error-muted-secondary:  #ec16162c;
     --color-primary-transparent: #00be984d;
     --color-secondary-transparent: #00be9815;
     --color-terciary-transparent: #00be9831;
+    --color-error-muted-secondary:  #ec16162c;
     --color-secondary-background: #001812;
+    --background: #e2fff6;
+    --color-border: #cfd1d4;
+    --color-success: #22C55E;
+    --color-error: #EF4444;
+    --color-error-muted: #ec161663;
 }
 
 html {

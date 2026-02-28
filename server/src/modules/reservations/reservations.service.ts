@@ -8,6 +8,9 @@ import { Payment, Preference } from 'mercadopago';
 import { PaymentsService } from '../payments/payments.service';
 import { PaymentProps } from 'shared/db/payment';
 import { formattedReservation } from './utils/formattedReservation';
+import { ProfilesService } from '../profiles/profiles.service';
+import { ResponseUsersReservations } from './types/ResponseUserReservations';
+import { getInfoDate } from './utils/getInfoDate';
 
 @Injectable()
 export class ReservationsService {
@@ -15,7 +18,8 @@ export class ReservationsService {
   constructor(
     private readonly supabaseService: SupabaseService,
     private readonly mercadoPago: MercadoPagoService,
-    private readonly PaymentsService: PaymentsService
+    private readonly PaymentsService: PaymentsService,
+    private readonly ProfilesServices: ProfilesService
   ) { }
 
   async createReservationWithoutPayment(infoPayment) {
@@ -152,11 +156,9 @@ export class ReservationsService {
 
     return data;
   }
-
   update(id: number, updateReservationDto: UpdateReservationDto) {
     return `This action updates a #${id} reservation`;
   }
-
   async remove(id: string) {
     const { data, error } = await this.supabaseService
       .getClient()
@@ -170,5 +172,30 @@ export class ReservationsService {
     }
 
     return data;
+  }
+
+  async getByUsers(reservations: Reservation[]) {
+    const usersReservations: ResponseUsersReservations[] = await Promise.all(
+      reservations
+        .filter((res) => res.client_id !== res.professional_id)
+        .map(async (res) => {
+          const userFound = await this.ProfilesServices.findOne({ userId: res.client_id });
+          const { date, schedule } = getInfoDate({ start: res.start_time, end: res.end_time });
+          // En el servicio getByUsers
+          const newUserReservation: ResponseUsersReservations = {
+            id: res.id,
+            fullname: userFound[0].full_name,
+            email: userFound[0].email, // agregar
+            date,
+            schedule,
+            modality: res.session_modality,
+            status: "Confirmada",
+            itPast: new Date(res.start_time) < new Date()
+          };
+          return newUserReservation;
+        })
+    );
+
+    return usersReservations;
   }
 }

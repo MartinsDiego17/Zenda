@@ -1,5 +1,5 @@
 import { LayoutDashboardAdmin } from "@/app/core/admin/components/LayoutAdminDashboard";
-import { HistoryReservations } from "@/app/core/admin/components/reservations/HistoryReservations";
+import { ListSessionsGeneral } from "@/app/core/admin/components/reservations/ListSessionGeneral";
 
 export const metadata = {
     title: "Historial de reservas"
@@ -14,7 +14,7 @@ export default function Dashboard() {
             route="/admin/dashboard/reservation-history"
             titleSection="Historial de reservas"
             subtitleSection="Acá vas a poder acceder al listado de reservas">
-            <HistoryReservations />
+            <ListSessionsGeneral />
         </LayoutDashboardAdmin>
     );
 }

@@ -3,6 +3,7 @@ import { ReservationsService } from './reservations.service';
 import { UpdateReservationDto } from './dto/update-reservation.dto';
 import { extractPaymentId } from './utils/extractPaymentId';
 import { ProfessionalSettingsService } from '../professional-settings/professional-settings.service';
+import { Reservation } from './types/reservations';
 
 @Controller('reservations')
 export class ReservationsController {
@@ -113,4 +114,9 @@ export class ReservationsController {
     }
   }
 
+  @Post("/by-users")
+  async getByUsers(@Body() reservations: Reservation[]) {
+    const data = await this.reservationsService.getByUsers(reservations);
+    return { data }
+  }
 }

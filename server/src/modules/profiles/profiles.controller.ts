@@ -13,7 +13,7 @@ export class ProfilesController {
   }
 
   @Get()
-  findAll() {
+  async findAll() {
     return this.profilesService.findAll();
   }
 

@@ -3,11 +3,11 @@
 import { Reservation } from "@/schemas/reservations";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
-import { getCurrentReservation } from "../utils/getCurrentReservation";
 import { Calendar, CalendarDays, Clock, Mail, MapPin, User, Video } from "lucide-react";
-import { getDateInfo } from "../../dashboard/utils/getDateInfo";
 import { Profile } from "@/schemas/profile";
 import { useAuthStore } from "@/store/AuthStore";
+import { getDateInfo } from "@/app/core/dashboard/utils/getDateInfo";
+import { getCurrentReservation } from "../../utils/getCurrentReservation";
 
 export const ReserveDetail = () => {
 
