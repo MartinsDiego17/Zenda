@@ -12,13 +12,13 @@ export const QUICK_LINKS = [
     icon: ClipboardList,
   },
   {
-    label: "Configuración profesional",
-    href: "/admin/dashboard/professional-settings",
-    icon: Settings,
-  },
-  {
     label: "Clientes",
     href: "/admin/dashboard/users",
     icon: Users,
+  },
+  {
+    label: "Configuración profesional",
+    href: "/admin/dashboard/professional-settings",
+    icon: Settings,
   },
 ]

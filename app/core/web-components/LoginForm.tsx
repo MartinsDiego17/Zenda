@@ -48,35 +48,22 @@ export const LoginForm = () => {
   }, [])
 
   return (
-    <div className="flex pt-10 flex-col">
+    <div className="bg-white flex pt-10 flex-col">
 
       <main className="relative flex flex-1 items-center justify-center px-6 pt-24 pb-16">
 
         <div
           ref={cardRef}
-          className={`relative w-full max-w-md transition-all duration-700 ${
-            visible
+          className={`relative w-full max-w-md transition-all duration-700 ${visible
               ? "translate-y-0 opacity-100"
               : "translate-y-6 opacity-0"
-          }`}
+            }`}
         >
-          <Card className="border-border/60 bg-card/80 shadow-lg backdrop-blur-sm">
+          <Card id="login-form" className="border-border/60 bg-card/80 shadow-lg backdrop-blur-sm">
             <CardContent className="flex flex-col items-center gap-8 px-8 py-10 sm:px-12 sm:py-12">
               <div className="flex flex-col items-center gap-4">
-                <div className="flex size-14 items-center justify-center rounded-2xl bg-(--color-primary) shadow-md">
-                  <svg
-                    width="28"
-                    height="28"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                    aria-hidden="true"
-                  >
-                    <path
-                      d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2Zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93Zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39Z"
-                      fill="white"
-                    />
-                  </svg>
+                <div className="flex place-items-center gap-x-2 w-fit cursor-pointer">
+                  <span className="letter-logo text-2xl font-extrabold bg-(--color-primary) py-1 px-3 rounded-[10px] text-white">Z</span>
                 </div>
 
                 <div className="flex flex-col items-center gap-1">
@@ -87,7 +74,7 @@ export const LoginForm = () => {
                     Bienvenido a Zenda
                   </h1>
                   <p className="text-center text-sm leading-relaxed text-muted-foreground">
-                    Inicia sesión para gestionar tus citas y acceder a tus sesiones
+                    Iniciá sesión para gestionar tus citas y acceder a tus sesiones
                   </p>
                 </div>
               </div>
@@ -113,7 +100,7 @@ export const LoginForm = () => {
 
               {/* Terms */}
               <p className="text-center text-xs leading-relaxed text-muted-foreground">
-                Al iniciar sesión, acepta nuestros{" "}
+                Al iniciar sesión, aceptás nuestros{" "}
                 <a
                   href="#"
                   className="font-medium text-primary underline-offset-4 transition-colors hover:underline"

@@ -28,7 +28,7 @@ export const AsideDashboardAdmin = () => {
     const pathname = usePathname()
 
     return (
-        <aside className="hidden h-screen w-full shrink-0 lg:block">
+        <aside className="h-screen w-full shrink-0">
             <nav
                 className="sticky flex flex-col h-screen gap-1 bg-card aside-admin-dashboard"
                 aria-label="Admin navigation"

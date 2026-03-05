@@ -1,5 +1,5 @@
+import { ReservePayment } from "@/app/core/dashboard/components/confirm/ReservePayment"
 import { LayoutDashboardUser } from "@/app/core/dashboard/components/LayoutDashboardUser"
-import { ReservePayment } from "@/app/core/dashboard/components/ReservePayment"
 
 export const metadata = {
     title: 'Zenda: Pasarela de pago',

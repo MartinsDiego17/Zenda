@@ -1,5 +1,5 @@
 import { LayoutDashboardUser } from "@/app/core/dashboard/components/LayoutDashboardUser"
-import { ReserveUser } from "@/app/core/dashboard/components/ReserveUser"
+import { ReserveUser } from "@/app/core/dashboard/components/reserve/ReserveUser"
 
 export const metadata = {
     title: 'Zenda: Reserva de sesión',

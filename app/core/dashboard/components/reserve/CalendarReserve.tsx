@@ -67,12 +67,19 @@ export const CalendarReserve = ({
 
   const isDateDisabled = (day: Date) => {
     if (!currentProfessionalSettings) return true
+
     const today = new Date()
     today.setHours(0, 0, 0, 0)
     const maxDate = new Date(today)
     maxDate.setDate(today.getDate() + currentProfessionalSettings.reservation_window_days)
+
     if (day <= today) return true
     if (day > maxDate) return true
+
+    // Deshabilitar días fuera del rango laboral
+    const dayOfWeek = day.getDay() // 0 = domingo, 6 = sábado
+    if (!enabledDays.includes(dayOfWeek)) return true
+
     return false
   }
 

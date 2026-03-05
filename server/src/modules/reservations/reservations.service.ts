@@ -6,7 +6,6 @@ import { MercadoPagoService } from '../mercado-pago/mercado-pago.service';
 import { Reservation } from './types/reservations';
 import { Payment, Preference } from 'mercadopago';
 import { PaymentsService } from '../payments/payments.service';
-import { PaymentProps } from 'shared/db/payment';
 import { formattedReservation } from './utils/formattedReservation';
 import { ProfilesService } from '../profiles/profiles.service';
 import { ResponseUsersReservations } from './types/ResponseUserReservations';
@@ -79,7 +78,7 @@ export class ReservationsService {
           id: infoReservation.reservation.id,
           title: "Pago de seña de reserva",
           quantity: 1,
-          unit_price: 1 /* infoReservation.deposit_amount */
+          unit_price:  infoReservation.deposit_amount 
         }],
         metadata: {
           infoReservation
@@ -156,9 +155,6 @@ export class ReservationsService {
 
     return data;
   }
-  update(id: number, updateReservationDto: UpdateReservationDto) {
-    return `This action updates a #${id} reservation`;
-  }
   async remove(id: string) {
     const { data, error } = await this.supabaseService
       .getClient()
@@ -173,7 +169,6 @@ export class ReservationsService {
 
     return data;
   }
-
   async getByUsers(reservations: Reservation[]) {
     const usersReservations: ResponseUsersReservations[] = await Promise.all(
       reservations

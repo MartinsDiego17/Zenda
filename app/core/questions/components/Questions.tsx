@@ -9,6 +9,7 @@ import {
 } from "@/components/ui/accordion"
 import { cn } from "@/lib/utils"
 import { Chip } from "../../web-components/Chip"
+import "./questions.css";
 
 const faqs = [
   {
@@ -54,7 +55,7 @@ export const Questions = () => {
     }, [])
 
     return (
-        <section id="faq" className="h-screen bg-white border-y py-24 px-6" ref={ref}>
+        <section id="faq" className=" bg-white border-y py-24 px-6" ref={ref}>
             <div className="mx-auto max-w-3xl">
                 <div
                     className={cn(

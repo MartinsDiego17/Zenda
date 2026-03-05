@@ -26,7 +26,7 @@ export const ModalitiesSection = ({ modalities, onChange }: ModalitiesProps) => 
     return (
         <div className="h-[25%] shadow-container p-5">
             <TitleSectionSettings LucideIcon={Video} title="Modalidades de sesión" />
-            <div className="mt-4 flex  gap-x-4">
+            <div className="mt-4 flex gap-4 modalities-checkbox-group">
                 <div className="flex items-center gap-2">
                     <Checkbox
                         id="virtual"

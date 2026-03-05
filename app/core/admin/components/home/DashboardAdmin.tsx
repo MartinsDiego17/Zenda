@@ -39,7 +39,9 @@ export const DashboardAdmin = () => {
         const fetchReservations = async () => {
             const professionalId = currentSession.user.id;
             const localReservations = await currentGetAllReservations({ professionalId });
-            setAllReservations(localReservations);
+            
+            const filteredsReservations = localReservations.filter(( res: Reservation ) => res.client_id !== professionalId);
+            setAllReservations(filteredsReservations);
 
             const { turnsToday, turnsConfirm, totalTurns } = getInfoTurns({ reservations: localReservations, professionalId });
             setCleanReservations({
@@ -59,7 +61,7 @@ export const DashboardAdmin = () => {
 
     return (
         <LayoutDashboardAdmin titleSection="Panel de administración" subtitleSection="Este es un resumen de tu dia">
-            <section className="h-[40vh] w-[90%] dashboard-admin-cards flex justify-between gap-x-4">
+            <section className="dashboard-admin-cards dashboard-admin-section flex justify-between gap-x-4">
 
                 <article>
                     <h3 className="font-extrabold">Próximos turnos</h3>

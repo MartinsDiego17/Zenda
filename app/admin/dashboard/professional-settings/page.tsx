@@ -13,7 +13,7 @@ export default function Dashboard() {
             routeBack="/admin/dashboard"
             route="/admin/dashboard/professional-settings"
             titleSection="Configuración profesional"
-            subtitleSection="Define como configurar tus sesiones">
+            subtitleSection="Definí como configurar tus sesiones">
                 <ProfessionalSettings />
         </LayoutDashboardAdmin>
     );

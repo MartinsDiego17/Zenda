@@ -8,7 +8,7 @@ import {
     TableRow,
 } from "@/components/ui/table"
 import { Reservation } from "@/schemas/reservations"
-import { getDateInfo } from "../utils/getDateInfo"
+import { getDateInfo } from "../../utils/getDateInfo"
 import { Video, MapPin } from "lucide-react"
 
 

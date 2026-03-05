@@ -13,7 +13,7 @@ export default function Dashboard() {
             routeBack="/admin/dashboard"
             route="/admin/dashboard/calendar"
             titleSection="Gestión de agenda"
-            subtitleSection="Organiza tu disponibilidad y bloquea horarios manualmente">
+            subtitleSection="Organizá tu disponibilidad y bloqueá horarios manualmente">
             <CalendarAdmin />
         </LayoutDashboardAdmin>
     );

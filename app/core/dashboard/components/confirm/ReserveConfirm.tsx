@@ -1,16 +1,15 @@
 "use client";
 import { useReservationsStore } from "@/store/ReservationsStore";
-import { CircleCheck, Calendar, Clock, Map, User, MapPin, ArrowLeft, Info } from "lucide-react";
-import { getFormattedDataCurrentReservation } from "../utils/getFormattedDataCurrentReservation";
+import { CircleCheck, Calendar, Clock, Map, User, MapPin, ArrowLeft, Info, HomeIcon } from "lucide-react";
 import { useAuthStore } from "@/store/AuthStore";
 import { useEffect, useState, useRef } from "react";
 import { useProfessionalSettingsStore } from "@/store/ProfessionalSettingsStore";
 import { Profile } from "@/schemas/profile";
 import { useRedirectUserConfirmationPayment } from "@/lib/redirectUserConfirmationPayment";
 import Link from "next/link";
-import { ButtonPrimary } from "../../web-components/ButtonPrimary";
-import { createReservation } from "../utils/createReservation";
-
+import { createReservation } from "../../utils/createReservation";
+import { ButtonPrimary } from "@/app/core/web-components/ButtonPrimary";
+import { getFormattedDataCurrentReservation } from "../../utils/getFormattedDataCurrentReservation";
 
 export const ReserveConfirm = () => {
 
@@ -91,7 +90,7 @@ export const ReserveConfirm = () => {
                         <ul className="flex flex-col gap-y-4">
                             <li>
                                 <span className="text-(--color-primary-hover)"><Calendar size={15} strokeWidth={2} /></span>
-                                <span>{localFormattedReservationData?.formattedDate}</span>
+                                <span>{localFormattedReservationData?.formattedDate}, {new Date().getFullYear()}</span>
                             </li>
                             <li>
                                 <span className="text-(--color-primary-hover)"><Clock size={15} strokeWidth={2} /></span>
@@ -119,7 +118,7 @@ export const ReserveConfirm = () => {
                             <span><Info className="size-4 text-(--color-primary)" /></span>
                             <span>Reserva confirmada</span>
                         </h3>
-                        <p className="opacity-60 text-[.9rem] mt-2">Tu turno ha sido confirmado con éxito. Las solicitudes de cancelación o reprogramación deberán realizarse con una antelación mínima de 48 horas.</p>
+                        <p className="opacity-60 text-[.9rem] mt-2">¡Todo listo! Si necesitás cancelar o reprogramar, recordá hacerlo con al menos 48 horas de anticipación.</p>
                     </div>
 
                 </article>
@@ -127,7 +126,7 @@ export const ReserveConfirm = () => {
                 <article className="mt-6">
                     <Link href={"/dashboard"}>
                         <ButtonPrimary>
-                            <span><ArrowLeft /></span>
+                            <span><HomeIcon /></span>
                             <span>Volver al inicio</span>
                         </ButtonPrimary>
                     </Link>

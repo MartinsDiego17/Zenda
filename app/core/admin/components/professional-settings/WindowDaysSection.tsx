@@ -33,7 +33,6 @@ export const WindowDaysSection = ({ value, onChange }: WindowDaysSectionProps) =
                     </SelectContent>
                 </Select>
             </div>
-            <p className="mt-4 text-[.75rem] opacity-60">Cantidad de días hacia adelante que tus pacientes pueden ver disponibilidad y reservar un turno.</p>
         </div>
     );
 };

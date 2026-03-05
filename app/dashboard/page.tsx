@@ -1,4 +1,4 @@
-import { DashboardUser } from "../core/dashboard/components/DashboardUser";
+import { DashboardUser } from "../core/dashboard/components/home/DashboardUser";
 
 export const metadata = {
     title: 'Zenda: Panel de administración',

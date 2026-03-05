@@ -63,9 +63,9 @@ export const ListUsersAndSessions = () => {
     );
 
     return (
-        <section className="w-[70vw] flex mt-10 justify-between gap-x-10 min-h-[30vh]">
+        <section className="list-users-sessions-section flex mt-10 justify-between gap-x-10 min-h-[30vh]">
 
-            <article className="w-[32%]">
+            <article className="list-users-article">
                 <ListUsers
                     users={paginatedUsers}
                     totalUsers={filteredUsers.length}
@@ -79,7 +79,7 @@ export const ListUsersAndSessions = () => {
                 />
             </article>
 
-            <article className="w-[68%]">
+            <article className="list-sessions-article">
                 <ListSessions
                     reservations={localReservations}
                     userSelected={userSelected}

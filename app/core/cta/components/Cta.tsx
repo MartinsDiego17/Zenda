@@ -5,6 +5,7 @@ import { CalendarCheck, ArrowRight } from "lucide-react"
 import { useRef, useState, useEffect } from "react"
 import { ButtonPrimary } from "../../web-components/ButtonPrimary"
 import Link from "next/link"
+import "./cta.css";
 
 export const Cta = () => {
     const ref = useRef<HTMLDivElement>(null)
@@ -41,7 +42,7 @@ export const Cta = () => {
                     <span className="text-(--color-primary)">el primer paso?</span>
                 </h2>
 
-                <p className="mx-auto mt-6 max-w-xl text-pretty text-lg leading-relaxed text-muted-foreground">
+                <p className="cta-description mx-auto mt-6 max-w-xl text-pretty text-lg leading-relaxed text-muted-foreground">
                     Tu salud mental importa. Reserva tu primera sesión hoy y comienza tu viaje hacia una vida más saludable y feliz con Zenda.
                 </p>
 

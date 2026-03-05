@@ -1,5 +1,3 @@
-import { Reservation } from "@/schemas/reservations";
-
 const enviroment = process.env;
 const serverUrl = enviroment.NEXT_PUBLIC_SERVER_URL;
 
@@ -17,7 +15,8 @@ export const serverConfig = {
         getByUsers: `${serverUrl}/reservations/by-users`
     },
     professionalSettings: {
-        get: `${serverUrl}/professional-settings`
+        get: `${serverUrl}/professional-settings`,
+        patch: ({ id }: { id: string }) => `${serverUrl}/professional-settings/${id}`,
     },
     profile: {
         findOne: ({ userId }: { userId: string }) => { return `${serverUrl}/profiles/${userId}` },

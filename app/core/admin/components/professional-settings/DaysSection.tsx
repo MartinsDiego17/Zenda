@@ -31,7 +31,7 @@ export const DaysSection = ({ days, handler }: DaysSectionProps) => {
     return (
         <div className="h-[25%] shadow-container p-5">
             <TitleSectionSettings LucideIcon={CalendarDays} title="Días laborales" />
-            <div className="mt-4 flex gap-x-3 flex-wrap">
+           <div className="mt-4 flex gap-x-3 flex-wrap days-checkbox-group">
                 {ALL_DAYS.map((day) => {
                     const isActive = days.includes(day);
                     const disabled = isActive && !isRemovable(day);

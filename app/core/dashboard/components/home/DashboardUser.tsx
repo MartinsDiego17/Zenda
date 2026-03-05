@@ -1,16 +1,16 @@
 "use client";
 import { EmptyTurn } from "./EmptyTurn";
 import { CurrentTurn } from "./CurrentTurn";
-import "./dashboard.css"
+import "../dashboard.css"
 import { HistoryTurns } from "./HistoryTurns";
 import { useEffect, useState } from "react";
 import { Reservation } from "@/schemas/reservations";
 import { useAuthStore } from "@/store/AuthStore";
 import { useReservationsStore } from "@/store/ReservationsStore";
-import { getCurrentReservation } from "../utils/getCurrentReservation";
+import { getCurrentReservation } from "../../utils/getCurrentReservation";
 import { SkeletonCurrentReservation } from "./SkeletonCurrentReservation";
 import { SkeletonHistoryReservations } from "./SkeletonHistoryReservations";
-import { LayoutDashboardUser } from "./LayoutDashboardUser";
+import { LayoutDashboardUser } from "../LayoutDashboardUser";
 
 export const DashboardUser = () => {
 
@@ -43,9 +43,9 @@ export const DashboardUser = () => {
     return (
         <LayoutDashboardUser
             titleSection={`Hola, bienvenido ${firstName}`}
-            subtitleSection="Gestiona tus turnos y revisa tu historial de sesiones"
+            subtitleSection="Gestioná tus turnos y revisá tu historial de sesiones"
         >
-            <div className="flex justify-between h-full w-full max-h-screen">
+            <div className="dashboard-user-main-content flex justify-between h-full w-full max-h-screen">
 
                 {
                     currentSession

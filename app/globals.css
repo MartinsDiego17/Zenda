@@ -39,6 +39,7 @@
     --sidebar-border: oklch(0.922 0 0);
     --sidebar-ring: oklch(0.708 0 0);
 }
+
 :root {
     --color-primary: #00BE97;
     --color-primary-hover: #00A884;
@@ -47,7 +48,7 @@
     --color-primary-transparent: #00be984d;
     --color-secondary-transparent: #00be9815;
     --color-terciary-transparent: #00be9831;
-    --color-error-muted-secondary:  #ec16162c;
+    --color-error-muted-secondary: #ec16162c;
     --color-secondary-background: #001812;
     --background: #e2fff6;
     --color-border: #cfd1d4;
@@ -57,11 +58,11 @@
 }
 
 html {
-  scroll-behavior: smooth;
+    scroll-behavior: smooth;
 }
 
 body {
-  scroll-behavior: smooth;
+    scroll-behavior: smooth;
     width: 100%;
     position: relative;
     overflow-x: hidden;
@@ -90,6 +91,7 @@ body {
 
     background-repeat: repeat;
 }
+
 @theme inline {
     --radius-sm: calc(var(--radius) - 4px);
     --radius-md: calc(var(--radius) - 2px);
@@ -130,6 +132,7 @@ body {
     --color-sidebar-border: var(--sidebar-border);
     --color-sidebar-ring: var(--sidebar-ring);
 }
+
 .dark {
     --background: oklch(0.145 0 0);
     --foreground: oklch(0.985 0 0);
@@ -163,6 +166,7 @@ body {
     --sidebar-border: oklch(1 0 0 / 10%);
     --sidebar-ring: oklch(0.556 0 0);
 }
+
 @layer base {
     * {
         @apply border-border outline-ring/50;
@@ -173,9 +177,78 @@ body {
     }
 }
 
+/*
+------- RESPONSIVE ------- 
+MOBILE: 390x844;
+TABLET: 768x1024;
+LAPTOP: 1280x800
+*/
+
+.blur-section {
+    backdrop-filter: blur(10px);
+}
+
 .not-found-container h1 {
-  background: linear-gradient(90deg, var(--color-primary-transparent), var(--color-primary), var(--color-primary-hover), var(--color-primary-hover));
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+    background: linear-gradient(90deg, var(--color-primary-transparent), var(--color-primary), var(--color-primary-hover), var(--color-primary-hover));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+/* Estilos base ya existentes */
+.not-found-container h1 {
+    background: linear-gradient(90deg, var(--color-primary-transparent), var(--color-primary), var(--color-primary-hover), var(--color-primary-hover));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+/* ── Tablet (max 1024px) ── */
+@media (max-width: 1024px) {
+    .not-found-container {
+        padding-bottom: 6rem;
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+
+    .not-found-container h1 {
+        font-size: 7rem;
+    }
+
+    .not-found-container h2 {
+        font-size: 1rem;
+        letter-spacing: 1.5px;
+        text-align: center;
+    }
+
+    .not-found-container p {
+        width: 50vw;
+    }
+}
+
+/* ── Mobile (max 768px) ── */
+@media (max-width: 768px) {
+    .not-found-container {
+        padding-bottom: 3rem;
+        padding-left: 1.25rem;
+        padding-right: 1.25rem;
+        justify-content: center;
+    }
+
+    .not-found-container h1 {
+        font-size: 5rem;
+        line-height: 1;
+    }
+
+    .not-found-container h2 {
+        font-size: 0.75rem;
+        letter-spacing: 1px;
+        text-align: center;
+        margin-top: 0.5rem;
+    }
+
+    .not-found-container p {
+        width: 85vw;
+        font-size: 0.9rem;
+        margin-top: 1rem;
+    }
 }

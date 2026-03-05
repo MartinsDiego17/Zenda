@@ -1,19 +1,19 @@
 "use client";
 
 import { useReservationsStore } from "@/store/ReservationsStore";
-import { ButtonSecondary } from "../../web-components/ButtonSecondary";
-import { ButtonPrimary } from "../../web-components/ButtonPrimary";
+import { ButtonPrimary } from "../../../web-components/ButtonPrimary";
 import { Calendar, Clock, CreditCard, Video, CircleAlert, User, MapPin } from "lucide-react";
 import { Spinner } from "@/components/ui/spinner"
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { FormattedReservationProps, getFormattedDataCurrentReservation } from "../utils/getFormattedDataCurrentReservation";
+import { FormattedReservationProps, getFormattedDataCurrentReservation } from "../../utils/getFormattedDataCurrentReservation";
 import { useProfessionalSettingsStore } from "@/store/ProfessionalSettingsStore";
 import { useAuthStore } from "@/store/AuthStore";
 import { Profile } from "@/schemas/profile";
-import { formattedAmountDeposit } from "../utils/getFormattedAmountDeposit";
 import { useRedirectUserConfirmationPayment } from "@/lib/redirectUserConfirmationPayment";
-import { getPayment } from "../utils/getPayment";
+import { ButtonSecondary } from "@/app/core/web-components/ButtonSecondary";
+import { getPayment } from "../../utils/getPayment";
+import { formattedAmountDeposit } from "../../utils/getFormattedAmountDeposit";
 
 export const ReservePayment = () => {
 
@@ -107,7 +107,7 @@ export const ReservePayment = () => {
                                             <span>Estado del turno: </span>
                                             <span className="font-bold">Pendiente de pago</span>
                                         </h3>
-                                        <p className="text-[.8rem] mt-3 opacity-70">El turno se confirmará una vez acreditado el pago.</p>
+                                        <p className="text-[.8rem] mt-3 opacity-70 text-pretty">El turno se confirmará una vez acreditado el pago.</p>
                                     </div>
 
                                     <p className="text-[.7rem] text-pretty mt-3 opacity-70">Las solicitudes de cancelación o reprogramación deberán realizarse con una antelación mínima de 48 horas.</p>
@@ -116,8 +116,8 @@ export const ReservePayment = () => {
 
                                 <article className="card-payment-container h-full w-full">
                                     <h3 className="font-bold">Pago de seña</h3>
-                                    <h4 className="mt-4 opacity-80 text-[.9rem] flex place-items-center gap-x-1">
-                                        Para confirmar el turno se requiere una seña de
+                                    <h4 className="mt-4 opacity-80 text-[.9rem]">
+                                        <span>Para confirmar el turno se requiere una seña de {" "}</span>
                                         <span className="font-bold">
                                             ${formattedAmountDeposit({ deposit_amount: currentProfessionalSettings?.deposit_amount || 12000 })}
                                         </span>
@@ -144,7 +144,7 @@ export const ReservePayment = () => {
                 }
 
             </section>
-            <div className="flex w-full justify-center place-items-center gap-x-5">
+            <div className="buttons-payment flex w-full justify-center place-items-center gap-x-5">
                 <Link href={"/dashboard/reserve"}>
                     <ButtonSecondary>
                         <span>Volver y modificar</span>

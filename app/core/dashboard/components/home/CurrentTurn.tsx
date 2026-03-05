@@ -1,10 +1,10 @@
 import { Reservation } from "@/schemas/reservations";
-import { getDateInfo } from "../utils/getDateInfo";
 import { ArrowRight, CalendarPlus } from "lucide-react";
-import { ButtonPrimary } from "../../web-components/ButtonPrimary";
 import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
 import { NextAppointmentCard } from "./NextAppointmentCard";
+import { ButtonPrimary } from "@/app/core/web-components/ButtonPrimary";
+import { getDateInfo } from "../../utils/getDateInfo";
 
 interface props {
     reservation: Reservation | null

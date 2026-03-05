@@ -4,6 +4,7 @@ import { CalendarDays, Mail, User, Users } from "lucide-react";
 import { HistoryReservations } from "../reservations/HistoryReservations";
 import { useState } from "react";
 import { Profile } from "@/schemas/profile";
+import { CardUser } from "./CardUser";
 
 interface ListSessionsProps {
     reservations: ResponseUsersReservations[];
@@ -30,21 +31,10 @@ export const ListSessions = ({ reservations, userSelected }: ListSessionsProps) 
                 </h2>
                 {
                     userSelected && (
-                        <div className={"px-5 py-2 flex place-items-center border-b gap-x-4"}>
+                        <>
+                            <CardUser user={userSelected} />
+                        </>
 
-                            <div className="flex place-items-center gap-x-2">
-                                <div className="avatar border border-transparent p-2.5 text-(--color-primary) font-bold text-[.7rem] rounded-full bg-(--color-terciary-transparent)">
-                                    {userSelected.full_name[0]}{userSelected.full_name.split(" ")[1][0]}
-                                </div>
-                                <h3 className="text-[.8rem] name-current-user ">{userSelected.full_name}</h3>
-                            </div>
-
-                            <h3 className="flex place-items-center gap-x-2 w-[60%] opacity-60 text-[.8rem]">
-                                <span><Mail size={12} /></span>
-                                <span>{userSelected.email}</span>
-                            </h3>
-
-                        </div>
                     )
                 }
             </header>

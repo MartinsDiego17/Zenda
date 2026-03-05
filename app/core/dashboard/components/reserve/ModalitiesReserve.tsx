@@ -1,5 +1,5 @@
+import { ButtonPrimary } from "@/app/core/web-components/ButtonPrimary";
 import { ProfessionalSettings } from "@/schemas/professional_settings"
-import { ButtonPrimary } from "../../web-components/ButtonPrimary"
 import { SessionModalityToUser } from "@/schemas/reservations"
 import { ArrowRight, MapPin, Video } from "lucide-react";
 

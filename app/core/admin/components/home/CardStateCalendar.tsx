@@ -11,7 +11,7 @@ export const CardStateCalendar = ({ title, quantityTurns }: props) => {
                 <span className="text-(--color-primary)"><AlertCircle size={15} /></span>
                 <span>{title}</span>
             </p>
-            <p>{quantityTurns}</p>
+            <p>{quantityTurns ? quantityTurns : "-"}</p>
         </div>
     );
 };

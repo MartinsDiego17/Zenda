@@ -15,25 +15,23 @@ export const HeaderDashboard = ({ isUserAdmin = false }: props) => {
     useRedirectUser();
     const currentLogout = useAuthStore(state => state.logout);
 
-
     return (
-        <header id="header-visitor" className="border-b header-visitor-container w-screen flex justify-center place-items-center py-5">
-            <div className="w-[70vw] flex place-items-center justify-between">
+        <header id="header-dashboard" className="border-b header-visitor-container w-screen flex justify-center place-items-center py-5">
+            <div className="header-dashboard-inner w-[70vw] flex place-items-center justify-between">
                 <Logo route={isUserAdmin ? "" : ""} />
 
                 <span className="log-out flex place-items-center gap-x-4">
-                {
-                    isUserAdmin && (
-                        <div className="admin-chip rounded-full gap-x-2 flex place-items-center">
-                            <span className="text-(--color-primary)"><User size={15} strokeWidth={2}/></span>
-                            <span className="font-light text-[.85rem]">Administrador</span>
-                        </div>
-                    )
-                }
+                    {
+                        isUserAdmin && (
+                            <div className="admin-chip rounded-full gap-x-2 flex place-items-center">
+                                <span className="text-(--color-primary)"><User size={15} strokeWidth={2} /></span>
+                                <span className="admin-chip-label font-light text-[.85rem]">Administrador</span>
+                            </div>
+                        )
+                    }
 
                     <ModalLogout handler={currentLogout} />
                 </span>
-
             </div>
         </header>
     );

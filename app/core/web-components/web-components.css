@@ -18,6 +18,7 @@
     border-color: var(--color-border);
     border-color: #dadada;
     color: var(--color-text-primary);
+
     &:hover {
         background-color: rgba(204, 204, 204, 0.5);
     }
@@ -26,6 +27,7 @@
 #button-personalized.primary {
     box-shadow: 0px 5px 10px var(--color-primary-transparent);
     background-color: var(--color-primary);
+
     &:hover {
         background-color: var(--color-primary-hover);
     }
@@ -35,16 +37,6 @@
     font-family: var(--font-poppins);
 }
 
-.login-form-container .form-shadcn {
-    border-radius: 10px;
-    box-shadow: 0px 0px 25px rgba(0,0,0,0.4);
-    backdrop-filter: blur(30px);
-}
-
-.login-form-container .form-shadcn button:last-child:active {
-    transform: scale(.95);
-}
-
 .letter-logo {
     background: linear-gradient(to right bottom, var(--color-primary), var(--color-primary-hover));
 }
@@ -52,3 +44,4 @@
 .chip-container {
     backdrop-filter: blur(10px);
 }
+

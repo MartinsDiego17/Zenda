@@ -1,6 +1,5 @@
 "use client";
-
-import { Calendar, dayjsLocalizer, EventProps } from "react-big-calendar";
+import { Calendar, dayjsLocalizer } from "react-big-calendar";
 import type { View } from "react-big-calendar";
 import dayjs from "dayjs";
 import "react-big-calendar/lib/css/react-big-calendar.css";
@@ -50,85 +49,59 @@ export const CalendarAdmin = () => {
 
     const occupiedRanges = useMemo(() => {
         if (!events || !blockDate) return [];
-
         return events
             .filter(e => dayjs(e.start).format("YYYY-MM-DD") === blockDate)
-            .map(e => ({
-                start: dayjs(e.start),
-                end: dayjs(e.end),
-            }));
+            .map(e => ({ start: dayjs(e.start), end: dayjs(e.end) }));
     }, [events, blockDate]);
 
     const hasOverlap = (start: string, end: string) => {
         const newStart = dayjs(`${blockDate} ${start}`);
         const newEnd = dayjs(`${blockDate} ${end}`);
-
-        return occupiedRanges.some(r =>
-            newStart.isBefore(r.end) && newEnd.isAfter(r.start)
-        );
+        return occupiedRanges.some(r => newStart.isBefore(r.end) && newEnd.isAfter(r.start));
     };
 
     const canStartAt = (time: string) => {
         const start = dayjs(`${blockDate} ${time}`);
         return !occupiedRanges.some(r =>
-            start.isSame(r.start) ||
-            (start.isAfter(r.start) && start.isBefore(r.end))
+            start.isSame(r.start) || (start.isAfter(r.start) && start.isBefore(r.end))
         );
     };
 
     const timeSlots = useMemo(() => {
         if (!calendarSchedule?.min || !calendarSchedule?.max) return [];
-
         const start = dayjs(calendarSchedule.min);
         const end = dayjs(calendarSchedule.max);
-
         const slots: string[] = [];
         let current = start;
-
         while (current.isBefore(end)) {
             slots.push(current.format("HH:mm"));
             current = current.add(sessionMinutesDuration + 10, "minute");
         }
-
         return slots;
     }, [calendarSchedule, sessionMinutesDuration]);
 
     const validEndTimes = useMemo(() => {
         if (!blockStartTime || !blockDate || !calendarSchedule?.max) return [];
-
         const start = dayjs(`${blockDate} ${blockStartTime}`);
-
-        // We need its HH:mm string as a candidate end time, even though
-        // it is not a session-start slot and therefore absent from timeSlots.
         const workdayEndStr = dayjs(calendarSchedule.max).format("HH:mm");
-        const candidates = timeSlots.includes(workdayEndStr)
-            ? timeSlots
-            : [...timeSlots, workdayEndStr];
-
+        const candidates = timeSlots.includes(workdayEndStr) ? timeSlots : [...timeSlots, workdayEndStr];
         return candidates.filter(t => {
             const end = dayjs(`${blockDate} ${t}`);
             if (!end.isAfter(start)) return false;
-
-            return !occupiedRanges.some(r =>
-                start.isBefore(r.end) && end.isAfter(r.start)
-            );
+            return !occupiedRanges.some(r => start.isBefore(r.end) && end.isAfter(r.start));
         });
     }, [blockStartTime, blockDate, timeSlots, occupiedRanges, calendarSchedule]);
 
     const reloadCalendar = async () => {
         const s = await setSession();
         if (!s?.user?.id) return;
-
         const data = await getAllReservations({ professionalId: s.user.id });
         setEvents(getCalendarEvents({ reservations: data, professionalId: s.user.id }));
         setCalendarSchedule(await getCalendarSchedule());
     };
 
     useEffect(() => {
-        const init = async () => {
-            await reloadCalendar();
-        };
-
+        const init = async () => { await reloadCalendar(); };
         void init();
     }, []);
 
@@ -159,16 +132,10 @@ export const CalendarAdmin = () => {
             alert("El bloqueo se solapa con una reserva o bloqueo existente");
             return;
         }
-
         await createNewBlock({
-            block: {
-                date: blockDate,
-                start: blockStartTime,
-                end: blockEndTime,
-            },
+            block: { date: blockDate, start: blockStartTime, end: blockEndTime },
             professionalId: session?.user.id || "",
         });
-
         await reloadCalendar();
         setBlockDialogOpen(false);
     };
@@ -199,9 +166,11 @@ export const CalendarAdmin = () => {
                 />
             )}
 
-            <div className="w-[70vw] h-[70vh]">
-                <section className="flex gap-6 h-full">
-                    <article className="w-[70%]">
+            <div className="calendar-admin-wrapper">
+                <section className="calendar-admin-section flex gap-6">
+
+                    {/* Calendario principal */}
+                    <article className="calendar-main-article">
                         <Calendar
                             localizer={localizer}
                             events={events}
@@ -228,7 +197,8 @@ export const CalendarAdmin = () => {
                         />
                     </article>
 
-                    <article id="calendar-and-manual-block" className="w-[30%]">
+                    {/* Panel lateral */}
+                    <article id="calendar-and-manual-block" className="calendar-side-article">
                         <CalendarShad
                             date={date}
                             onSelectDate={(d) => {
@@ -236,7 +206,6 @@ export const CalendarAdmin = () => {
                                 setView("day");
                             }}
                         />
-
                         <ButtonManualBlock
                             open={blockDialogOpen}
                             setOpen={setBlockDialogOpen}
@@ -253,9 +222,9 @@ export const CalendarAdmin = () => {
                             isValid={!!(blockDate && blockStartTime && blockEndTime)}
                             onSubmit={handleBlockSubmit}
                         />
-
                         <Legend />
                     </article>
+
                 </section>
             </div>
         </>

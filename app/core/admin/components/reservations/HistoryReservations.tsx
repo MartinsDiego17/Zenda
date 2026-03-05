@@ -7,7 +7,15 @@ import {
     PaginationItem,
     PaginationLink,
 } from "@/components/ui/pagination";
+import {
+    Table,
+    TableBody,
+    TableHead,
+    TableHeader,
+    TableRow,
+} from "@/components/ui/table";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import "./reservations.css";
 
 const ITEMS_PER_PAGE = 8;
 
@@ -16,7 +24,7 @@ interface HistoryReservationsProps {
     currentPage: number;
     totalPages: number;
     onPageChange: (page: number) => void;
-    isUsersRoute: boolean
+    isUsersRoute: boolean;
 }
 
 export const HistoryReservations = ({
@@ -24,7 +32,7 @@ export const HistoryReservations = ({
     currentPage,
     totalPages,
     onPageChange,
-    isUsersRoute = false
+    isUsersRoute = false,
 }: HistoryReservationsProps) => {
 
     const getPageNumbers = (): (number | "ellipsis")[] => {
@@ -42,40 +50,60 @@ export const HistoryReservations = ({
             }, []);
     };
 
+    const layoutClass = !isUsersRoute ? "table-layout-admin" : "table-layout-users";
+
     return (
         <section className="history-reservations-container h-fit">
 
-            <article className="w-full border-b">
-                <ul className="header-titles-reservations py-5 flex justify-between px-5">
-                    {!isUsersRoute && <li className={`${!isUsersRoute ? "w-[20%]" : "w-[25%]"}`}>Cliente</li>}
-                    <li className={`${!isUsersRoute ? "w-[25%]" : "w-[45%]"}`}>Fecha y horario</li>
-                    <li className={`${!isUsersRoute ? "w-[15%]" : "w-[25%]"}`}>Modalidad</li>
-                    <li className={`${!isUsersRoute ? "w-[20%]" : "w-[25%]"}`}>Estado de pago</li>
-                    <li className={`flex justify-end ${!isUsersRoute ? "w-[20%]" : "w-[10%]"}`}>Acciones</li>
-                </ul>
-            </article>
-
-            <article>
-                <ul>
-                    {reservations?.length ? (
-                        reservations.map(res => (
-                            <ul className="border-b place-items-center px-5 py-3 flex current-reservation-history" key={res.id}>
-                                <CardReservationHistory reservationByUser={res} isUsersRoute={isUsersRoute} />
-                            </ul>
-                        ))
-                    ) : (
-                        <p className="p-5 opacity-70 text-[.8rem]">Todavía no hay reservas creadas</p>
+            <div className="table-scroll-wrapper">
+                <Table id="table-reservations">
+                    {reservations.length > 0 && (
+                        <TableHeader>
+                            <TableRow className={`header-titles-reservations ${layoutClass}`}>
+                                {!isUsersRoute && (
+                                    <TableHead className="col-cliente">Cliente</TableHead>
+                                )}
+                                <TableHead className="col-fecha">Fecha y horario</TableHead>
+                                <TableHead className="col-modalidad">Modalidad</TableHead>
+                                <TableHead className="col-estado">Estado de pago</TableHead>
+                                <TableHead className="col-acciones">Acciones</TableHead>
+                            </TableRow>
+                        </TableHeader>
                     )}
-                </ul>
-            </article>
 
+                    <TableBody>
+                        {reservations?.length ? (
+                            reservations.map(res => (
+                                <TableRow
+                                    key={res.id}
+                                    className={`current-reservation-history ${layoutClass}`}
+                                >
+                                    <CardReservationHistory
+                                        reservationByUser={res}
+                                        isUsersRoute={isUsersRoute}
+                                    />
+                                </TableRow>
+                            ))
+                        ) : (
+                            <TableRow>
+                                <td colSpan={isUsersRoute ? 4 : 5}>
+                                    <p className="p-5 opacity-70 text-[.8rem]">
+                                        Todavía no hay reservas creadas
+                                    </p>
+                                </td>
+                            </TableRow>
+                        )}
+                    </TableBody>
+                </Table>
+            </div>
+
+            {/* Paginación */}
             {totalPages > 1 && (
-                <article className="flex justify-between place-items-center py-4 px-5 border-t">
-                    <p className="w-[10vw] text-[.8rem] opacity-60">
+                <article className="pagination-footer flex justify-between place-items-center py-4 px-5 border-t">
+                    <p className="pagination-count text-[.8rem] opacity-60">
                         Mostrando {Math.min(currentPage * ITEMS_PER_PAGE, reservations.length)} de {reservations.length} reservas
                     </p>
-
-                    <div className="1/2">
+                    <div>
                         <Pagination className="flex justify-end">
                             <PaginationContent className="gap-1">
 

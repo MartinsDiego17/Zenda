@@ -10,6 +10,7 @@ import { useAuthStore } from "@/store/AuthStore"
 import { ModalLogout } from "./ModalLogout"
 
 import "./headers.css"
+import { SheetVisitor } from "./SheetVisitor"
 
 export const HeaderVisitor = () => {
     const pathname = usePathname()
@@ -28,12 +29,12 @@ export const HeaderVisitor = () => {
             id="header-visitor"
             className="header-visitor-container w-screen flex justify-center place-items-center py-5"
         >
-            <div className="w-[70vw] flex place-items-center justify-between">
+            <div className="header-visitor-inner w-[70vw] flex place-items-center justify-between">
                 <button onClick={scroll}>
                     <Logo />
                 </button>
 
-                <div className="flex place-items-center gap-x-10">
+                <div className="links-header-visitor flex place-items-center gap-x-10">
                     {isHome && (
                         <>
                             <ul className="flex place-items-center justify-between gap-x-10">
@@ -47,9 +48,6 @@ export const HeaderVisitor = () => {
                                     <Link href="#faq">Preguntas frecuentes</Link>
                                 </li>
                             </ul>
-
-
-
 
                             <>
                                 {!currentSession ? (
@@ -70,6 +68,13 @@ export const HeaderVisitor = () => {
                         </>
                     )}
                 </div>
+            </div>
+            <div className="sheet-visitor-container">
+                <SheetVisitor
+                    session={currentSession}
+                    logout={currentLogout}
+                    isHome={isHome}
+                />
             </div>
         </header>
     )

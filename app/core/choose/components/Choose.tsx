@@ -6,6 +6,7 @@ import Image from "next/image"
 import { useRef, useState, useEffect } from "react"
 import chooseImage from "../../../../public/choose/choose.png";
 import { Chip } from "../../web-components/Chip"
+import "./choose.css"
 
 const benefits = [
     {
@@ -41,7 +42,7 @@ export const Choose = () => {
         <section
             id="why-zenda"
             ref={ref}
-            className="h-screen border-y bg-white relative overflow-hidden py-24 lg:py-32"
+            className="border-y bg-white relative overflow-hidden py-24 lg:py-32"
         >
             <div className="mx-auto max-w-7xl px-6">
                 <div className="grid items-center gap-16 lg:grid-cols-2">
@@ -66,7 +67,7 @@ export const Choose = () => {
                         className={`flex flex-col gap-8 transition-all delay-200 duration-700 ${visible ? "translate-x-0 opacity-100" : "translate-x-8 opacity-0"
                             }`}
                     >
-                        <div>
+                        <div className="choose-title">
                             <Chip text="La ventaja de Zenda" />
                             <h2
                                 className="text-balance text-3xl mt-2 font-bold tracking-tight text-foreground md:text-4xl"
@@ -80,9 +81,9 @@ export const Choose = () => {
                             {benefits.map((benefit, index) => (
                                 <Card
                                     key={index}
-                                    className="group border-[#eee] bg-card transition-all duration-300 hover:-translate-y-1 hover:border-(--color-primary-transparent) hover:shadow-lg hover:shadow-primary/5"
+                                    className=" group border-[#eee] bg-card transition-all duration-300 hover:-translate-y-1 hover:border-(--color-primary-transparent) hover:shadow-lg hover:shadow-primary/5"
                                 >
-                                    <CardContent className="flex gap-5 p-6">
+                                    <CardContent className="choose-card-container flex gap-5 p-6">
                                         <div className="flex size-12 shrink-0 items-center justify-center rounded-2xl bg-(--color-secondary-transparent) transition-colors group-hover:bg-(--color-terciary-transparent)">
                                             <benefit.icon className="size-6 text-(--color-primary)" />
                                         </div>

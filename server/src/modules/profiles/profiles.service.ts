@@ -5,29 +5,23 @@ import { SupabaseService } from '../supabase/supabase.service';
 
 @Injectable()
 export class ProfilesService {
-
-
   constructor(
     private readonly supabaseService: SupabaseService
   ) { }
 
-  create(createProfileDto: CreateProfileDto) {
-    return 'This action adds a new profile';
-  }
-
-async findAll() {
+  async findAll() {
     const { data, error } = await this.supabaseService
-        .getClient()
-        .from('profiles')
-        .select('*')
-        .neq('role', 'ADMIN');
+      .getClient()
+      .from('profiles')
+      .select('*')
+      .neq('role', 'ADMIN');
 
     if (error) {
-        throw new Error(error.message);
+      throw new Error(error.message);
     }
 
     return data;
-}
+  }
 
   async findOne({ userId }: { userId: string }) {
     const { data, error } = await this.supabaseService
@@ -41,13 +35,5 @@ async findAll() {
     }
 
     return data;
-  }
-
-  update(id: number, updateProfileDto: UpdateProfileDto) {
-    return `This action updates a #${id} profile`;
-  }
-
-  remove(id: number) {
-    return `This action removes a #${id} profile`;
   }
 }

@@ -100,11 +100,6 @@ export class ReservationsController {
     return await this.reservationsService.findOne({ reservationId });
   }
 
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateReservationDto: UpdateReservationDto) {
-    return this.reservationsService.update(+id, updateReservationDto);
-  }
-
   @Delete(':id')
   async remove(@Param('id') id: string) {
     const data = await this.reservationsService.remove(id);

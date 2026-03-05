@@ -56,7 +56,7 @@ function ModalityCard({
                     )}
                 />
 
-                <CardContent className="relative flex flex-col gap-6 p-8">
+                <CardContent className="modality-card-container relative flex flex-col gap-6 p-8">
                     <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-(--color-terciary-transparent) text-(--color-primary) transition-all duration-500 group-hover:bg-(--color-primary) group-hover:text-primary-foreground group-hover:rounded-xl group-hover:scale-110">
                         <Icon className="size-7" />
                     </div>
@@ -103,7 +103,7 @@ export const Modalities = () => {
     }, [])
 
     return (
-        <section id="modalities" className="blur-section h-screen border-y py-24 px-6 bg-(--color-secondary-transparent)" ref={ref}>
+        <section id="modalities" className="blur-section border-y py-24 px-6 bg-(--color-secondary-transparent)" ref={ref}>
             <div className="mx-auto max-w-6xl">
                 <div
                     className={cn(

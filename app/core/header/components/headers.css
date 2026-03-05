@@ -1,4 +1,3 @@
-
 .header-visitor-container {
     position: fixed;
     top: 0;
@@ -6,13 +5,13 @@
     z-index: 50;
     animation: shrink-header linear both;
     animation-timeline: scroll(root);
-    animation-range: 100px 300px
+    animation-range: 100px 300px;
 }
 
 @keyframes shrink-header {
     to {
         backdrop-filter: blur(15px);
-        box-shadow: 0px 0px 5px rgba(0,0,0,0.4);
+        box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.4);
         background-color: rgba(255, 255, 255, 0.596);
     }
 }
@@ -23,13 +22,15 @@
     font-weight: 100;
 }
 
-#header-visitor .log-out #button-personalized {
+#header-visitor .log-out #button-personalized,
+#header-dashboard .log-out #button-personalized {
     width: fit-content;
     color: var(--color-error);
     font-weight: 700;
     border: solid 1px var(--color-error-muted);
     background-color: transparent;
     box-shadow: none;
+
     &:hover {
         border-color: red;
         background-color: var(--color-error-muted-secondary);
@@ -50,3 +51,86 @@ header button {
     cursor: pointer;
 }
 
+/* El sheet está oculto por defecto en desktop */
+.sheet-visitor-container {
+    display: none;
+}
+
+/* ─── Tablet (≤ 1024px) ──────────────────────────────────────────── */
+@media (max-width: 1024px) {
+
+    /* HeaderVisitor: ocultar nav links, mostrar sheet (hamburguesa) */
+    #header-visitor .links-header-visitor {
+        display: none;
+    }
+
+    #header-visitor .sheet-visitor-container {
+        display: block;
+    }
+
+    /* HeaderVisitor: inner wrapper más ancho */
+    .header-visitor-inner,
+    .header-dashboard-inner {
+        width: 85vw;
+    }
+
+    /* HeaderDashboard: ocultar texto del botón logout, solo ícono */
+    #header-dashboard .log-out #button-personalized span:last-child {
+        display: none;
+    }
+
+    /* Admin chip: reducir padding en tablet */
+    .admin-chip {
+        padding: 4px 10px;
+    }
+
+    .header-visitor-container {
+        backdrop-filter: blur(20px);
+    }
+}
+
+/* ─── Mobile (≤ 768px) ───────────────────────────────────────────── */
+@media (max-width: 768px) {
+
+    /* Más padding vertical compacto */
+    .header-visitor-container {
+        padding-top: 14px;
+        padding-bottom: 14px;
+        backdrop-filter: blur(20px);
+    }
+
+    /* Inner wrappers: usar casi todo el ancho */
+    .header-visitor-inner,
+    .header-dashboard-inner {
+        width: 85vw;
+    }
+
+    /* HeaderVisitor: aseguramos que el sheet esté visible */
+    #header-visitor .sheet-visitor-container {
+        display: block;
+    }
+
+    /* HeaderDashboard: admin chip sin label en mobile */
+    .admin-chip .admin-chip-label {
+        display: none;
+    }
+
+    /* Admin chip compacto: solo ícono */
+    .admin-chip {
+        padding: 6px;
+        border-radius: 50%;
+    }
+
+    /* Botón logout: reducir padding para que quepa */
+    #header-dashboard .log-out #button-personalized {
+        padding: 8px 12px;
+        font-size: .8rem;
+    }
+
+    /* Logo: escalar ligeramente si el componente lo permite */
+    #header-visitor .logo-container,
+    #header-dashboard .logo-container {
+        transform: scale(0.9);
+        transform-origin: left center;
+    }
+}

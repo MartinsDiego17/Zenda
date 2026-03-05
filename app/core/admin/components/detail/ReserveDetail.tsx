@@ -23,7 +23,7 @@ export const ReserveDetail = () => {
             const localReservation: Reservation = await getCurrentReservation({ reservationId: id });
             const userFound = await currentFindOneUser({ userId: localReservation.client_id });
             setLocalUser(userFound);
-            setCurrentReservation(localReservation)
+            setCurrentReservation(localReservation);
             return localReservation;
         }
 
@@ -34,17 +34,16 @@ export const ReserveDetail = () => {
 
     return (
         <div>
-
-            {
-                currentReservation &&
+            {currentReservation && (
                 <>
-                    <div className="flex place-items-center w-[40vw] justify-between">
+                    {/* Barra superior: fecha + modalidad */}
+                    <div className="reserve-detail-header flex place-items-center justify-between">
                         <div className="text-[.9rem] flex gap-x-4 place-items-center">
                             <p className="flex gap-x-2 opacity-70 place-items-center">
                                 <span><Calendar size={15} /></span>
                                 <span>{infoDate.date}</span>
                             </p>
-                            <span className="opacity-20">|</span>
+                            <span className="opacity-20 separator">|</span>
                             <p className="flex gap-x-2 opacity-70 place-items-center">
                                 <span><Clock size={15} /></span>
                                 <span>{infoDate.schedule}</span>
@@ -53,10 +52,9 @@ export const ReserveDetail = () => {
                         <div>
                             <p className="chip-modality gap-x-2 flex place-items-center text-[.8rem]">
                                 <span>
-                                    {
-                                        currentReservation?.session_modality === "Virtual"
-                                            ? <Video size={13} />
-                                            : <MapPin size={13} />
+                                    {currentReservation?.session_modality === "Virtual"
+                                        ? <Video size={13} />
+                                        : <MapPin size={13} />
                                     }
                                 </span>
                                 <span>{currentReservation?.session_modality}</span>
@@ -65,6 +63,8 @@ export const ReserveDetail = () => {
                     </div>
 
                     <section className="mt-10 flex flex-col gap-y-6">
+
+                        {/* Card — Datos del cliente */}
                         <article className="card-info-detail">
                             <h2 className="font-bold flex place-items-center gap-x-2">
                                 <span className="opacity-50"><User strokeWidth={1.5} size={18} /></span>
@@ -75,23 +75,23 @@ export const ReserveDetail = () => {
                                     <span>{localUser?.full_name[0]}{localUser?.full_name.split(" ")[1][0]}</span>
                                 </div>
                                 <div>
-                                    <h2 className="font-bold opacity-80 flex place-items-center gap-x-2">{localUser?.full_name}</h2>
-                                    <div className="flex place-items-center gap-x-6">
-                                        <h4 className="mt-2 opacity-70 text-[.9rem] flex place-items-center gap-x-2">
-                                            <span><Mail size={15} /></span>
-                                            <span>{localUser?.email}</span>
-                                        </h4>
-                                    </div>
+                                    <h2 className="title font-bold opacity-80">{localUser?.full_name}</h2>
+                                    <h4 className="detail-email mt-2 opacity-70 text-[.9rem] flex place-items-center gap-x-2">
+                                        <span><Mail size={15} /></span>
+                                        <span>{localUser?.email}</span>
+                                    </h4>
                                 </div>
                             </div>
                         </article>
+
+                        {/* Card — Detalles de la reserva */}
                         <article className="card-info-detail">
                             <h2 className="font-bold flex place-items-center gap-x-2">
                                 <span className="opacity-50"><CalendarDays strokeWidth={1.5} size={18} /></span>
                                 <span>Detalles de la reserva</span>
                             </h2>
 
-                            <section className="mb-6 mt-8 flex  place-items-center gap-x-40">
+                            <section className="reserve-detail-fields mb-6 mt-8 flex place-items-center">
                                 <article>
                                     <h3 className="opacity-70 text-[.8rem]">FECHA DE RESERVA</h3>
                                     <h4 className="mt-2 font-bold text-[.8rem]">{infoDate.date}, {infoDate.schedule}</h4>
@@ -99,18 +99,15 @@ export const ReserveDetail = () => {
 
                                 <article>
                                     <h3 className="opacity-70 text-[.8rem]">MODALIDAD</h3>
-                                    <div>
-                                        <p className="gap-x-2 flex place-items-center text-[.8rem]">
-                                            <span>
-                                                {
-                                                    currentReservation?.session_modality === "Virtual"
-                                                        ? <Video className="text-(--color-primary)" size={13} />
-                                                        : <MapPin className="text-(--color-primary)" size={13} />
-                                                }
-                                            </span>
-                                            <span>{currentReservation?.session_modality}</span>
-                                        </p>
-                                    </div>
+                                    <p className="gap-x-2 flex place-items-center text-[.8rem] mt-2">
+                                        <span>
+                                            {currentReservation?.session_modality === "Virtual"
+                                                ? <Video className="text-(--color-primary)" size={13} />
+                                                : <MapPin className="text-(--color-primary)" size={13} />
+                                            }
+                                        </span>
+                                        <span>{currentReservation?.session_modality}</span>
+                                    </p>
                                 </article>
                             </section>
 
@@ -118,18 +115,15 @@ export const ReserveDetail = () => {
 
                             <article>
                                 <h3 className="mt-6 opacity-70 text-[.8rem]">ESTADO</h3>
-                                <p
-                                    className="mt-2 text-(--color-primary-hover) font-bold text-[.7rem] bg-(--color-secondary-transparent) w-fit px-2.5 py-0.5 rounded-full border border-(--color-primary-transparent)">
+                                <p className="mt-2 text-(--color-primary-hover) font-bold text-[.7rem] bg-(--color-secondary-transparent) w-fit px-2.5 py-0.5 rounded-full border border-(--color-primary-transparent)">
                                     Confirmada
                                 </p>
                             </article>
-
                         </article>
+
                     </section>
-
                 </>
-            }
-
+            )}
         </div>
     );
 }

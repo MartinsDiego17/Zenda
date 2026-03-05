@@ -203,3 +203,238 @@
     font-size: .8rem;
     font-weight: 600;
 }
+
+/* ================================
+   BASE — Desktop
+   ================================ */
+.dashboard-container {
+    width: 100vw;
+    height: 100vh;
+    max-height: 100vh;
+    overflow: hidden;
+}
+
+/* ================================
+   TABLET — max 1024px
+   ================================ */
+@media (max-width: 1024px) {
+    .dashboard-container {
+        height: auto;
+        max-height: none;
+        overflow: visible;
+        padding-top: 15%;
+        padding-bottom: 5%;
+        min-height: 100svh;
+    }
+    /* ... resto de estilos tablet ... */
+}
+
+/* ================================
+   MOBILE — max 768px
+   ================================ */
+@media (max-width: 768px) {
+    .dashboard-container {
+        height: auto;
+        max-height: none;
+        overflow-y: auto;
+        min-height: 100svh;
+    }
+    /* ... resto de estilos mobile ... */
+}
+
+
+/* ================================
+   TABLET — max 1024px
+   ================================ */
+@media (max-width: 1024px) {
+
+    /* Layout general */
+    .dashboard-son {
+        width: 90vw;
+        height: auto;
+        overflow-y: auto;
+    }
+
+    .layout-user-titles * {
+        text-align: center;
+    }
+
+    /* Dashboard principal */
+    .dashboard-user-main-content {
+        flex-direction: column;
+        justify-content: start;
+        row-gap: 20px;
+    }
+
+    .empty-turn-container,
+    .currentTurn-container {
+        width: 100%;
+    }
+
+    .dashboard-user-main-content .history-turns {
+        padding: 15px;
+        width: 100%;
+    }
+
+    /* ReserveUser — calendario + modalidades en columna */
+    .dashboard-son > section {
+        flex-direction: column;
+        max-height: none;
+        row-gap: 20px;
+    }
+
+    .dashboard-son > section > article {
+        width: 100% !important;
+    }
+
+    /* Card resumen reserva (ReserveConfirm) */
+    .card-confirm-reserve-container {
+        max-width: 100%;
+        width: 100%;
+        max-height: none;
+        height: auto;
+        min-height: auto;
+    }
+
+    /* ReserveConfirm — cards en columna */
+    .flex.justify-center.place-items-center.gap-x-8 {
+        flex-direction: column;
+        gap: 20px;
+        align-items: stretch;
+    }
+
+    /* ReservePayment — cards en columna */
+    .payment-container > section {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .payment-container #button-personalized {
+        width: 40vw;
+    }
+
+    /* Modalidades */
+    #modalities-reserve #button-personalized.secondary {
+        width: 100%;
+    }
+
+    #modalities-reserve {
+        margin-top: 20px;
+    }
+}
+
+
+
+/* ================================
+   MOBILE — max 768px
+   ================================ */
+@media (max-width: 768px) {
+
+    .payment-container section {
+        row-gap: 20px;
+    }
+
+    /* Layout general */
+    .dashboard-container {
+        align-items: flex-start;
+        padding-top: 100px; /* espacio para el header */
+        overflow-y: auto;
+        height: auto;
+        min-height: 100svh;
+        max-height: none;
+    }
+
+    .dashboard-son {
+        width: 90vw;
+        height: auto;
+        padding-bottom: 40px;
+    }
+
+    /* Títulos */
+    .layout-user-titles h1 {
+        font-size: 1.5rem;
+    }
+
+    /* Dashboard — containers */
+    .dashboard-container .history-turns,
+    .dashboard-container .currentTurn-container,
+    .dashboard-container .empty-turn-container {
+        padding: 15px;
+    }
+
+    .currentTurn-container .dateInfo {
+        padding: 10px 15px;
+        font-size: .8rem;
+    }
+
+    /* Tabla de historial */
+    #table-turns-container {
+        max-height: 350px;
+    }
+
+    /* Calendario */
+    .rdp-day {
+        height: 38px;
+    }
+
+    .calendar-reserve-container {
+        width: 100%;
+    }
+
+    /* ModalitiesReserve */
+    .modalities-container {
+        padding: 12px;
+    }
+
+    #modalities-reserve #button-personalized.secondary {
+        width: 100%;
+    }
+
+    /* ReserveConfirm */
+    .card-confirm-reserve-container {
+        max-width: 100%;
+        width: 100%;
+        max-height: none;
+        height: auto;
+        min-height: auto;
+    }
+
+    /* ReservePayment */
+    .payment-container #button-personalized {
+        width: 100%;
+    }
+
+    .payment-container .card-payment-container {
+        padding: 15px;
+    }
+
+    .card-payment-container li {
+        row-gap: 6px;
+    }
+
+    .card-payment-container li div span:first-child {
+        padding: 8px;
+    }
+
+    .payment-container .mercado-pago-box-container {
+        padding: 20px 15px;
+    }
+
+    /* Botones de acción en ReservePayment (Volver + Confirmar) */
+    .payment-container ~ div {
+        flex-direction: column;
+        width: 100%;
+        gap: 10px;
+    }
+
+    .payment-container ~ div a,
+    .payment-container ~ div button {
+        width: 100%;
+    }
+    .buttons-payment {
+        display: block;
+    }
+    .buttons-payment #button-personalized:first-child {
+        margin-bottom: 3%;
+    }
+}

@@ -1,6 +1,6 @@
 import Link from "next/link";
-import { ButtonPrimary } from "../../web-components/ButtonPrimary";
 import { CalendarIcon } from "lucide-react";
+import { ButtonPrimary } from "@/app/core/web-components/ButtonPrimary";
 
 export const EmptyTurn = () => {
     return (

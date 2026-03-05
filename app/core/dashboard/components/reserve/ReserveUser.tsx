@@ -1,18 +1,16 @@
 "use client"
 
-import Link from "next/link"
 import { CalendarReserve } from "./CalendarReserve"
-import { ModalitiesReserve } from "./ModalitiesReserve"
-import { ArrowLeft } from "lucide-react"
 import { useEffect, useRef, useState } from "react"
 import { Reservation, SessionModalityToUser } from "@/schemas/reservations"
 import { useProfessionalSettingsStore } from "@/store/ProfessionalSettingsStore"
 import { useAuthStore } from "@/store/AuthStore"
-import { getEndTimeReservation } from "../utils/getEndTimeReservation"
+import { getEndTimeReservation } from "../../utils/getEndTimeReservation"
 import { useReservationsStore } from "@/store/ReservationsStore"
 import { useRouter } from "next/navigation"
-import { getAvailabilityesReservations } from "../utils/getAvailabilitysReservations"
-import { AdminBlock, getAdminBlocks } from "../utils/getAdminBlocks"
+import { getAvailabilityesReservations } from "../../utils/getAvailabilitysReservations"
+import { AdminBlock, getAdminBlocks } from "../../utils/getAdminBlocks"
+import { ModalitiesReserve } from "./ModalitiesReserve"
 
 export const ReserveUser = () => {
   const debounceRef = useRef<NodeJS.Timeout | null>(null)
@@ -126,13 +124,15 @@ export const ReserveUser = () => {
     const fetchAdminBlocks = async () => {
       if (currentProfessionalSettings?.user_id) {
         const data = await getAdminBlocks({ professionalId: currentProfessionalSettings?.user_id || "" });
-        if(data.length) setAdminBlocks(data);
+        if (data.length) setAdminBlocks(data);
       }
+      if (currentProfessionalSettings?.session_modalities !== "BOTH") setLocalReservation({ ...localReservation, session_modality: currentProfessionalSettings?.session_modalities || "" })
     };
 
     fetchAdminBlocks();
 
   }, [currentProfessionalSettings]);
+
 
   return (
     <>

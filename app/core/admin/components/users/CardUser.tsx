@@ -3,10 +3,10 @@ import { Mail } from "lucide-react";
 
 interface props {
     user: Profile
-    isUserSelected: boolean
+    isUserSelected?: boolean
 }
 
-export const CardUser = ({ user, isUserSelected }: props) => {
+export const CardUser = ({ user, isUserSelected = false }: props) => {
     return (
         <div className={`p-5 py-3 border-b card-current-user flex place-items-center ${isUserSelected && "user-selected"}`}>
 
@@ -17,9 +17,9 @@ export const CardUser = ({ user, isUserSelected }: props) => {
                 <h3 className="text-[.8rem] name-current-user ">{user.full_name}</h3>
             </div>
 
-            <h3 className="flex place-items-center gap-x-2 w-[60%] opacity-60 text-[.8rem]">
-                <span><Mail size={12} /></span>
-                <span>{user.email}</span>
+            <h3 className="flex place-items-center gap-x-2 w-[60%] opacity-60 text-[.8rem] min-w-0">
+                <span className="shrink-0"><Mail size={12} /></span>
+                <span className="truncate">{user.email}</span>
             </h3>
 
         </div>

@@ -1,6 +1,6 @@
 import { Reservation } from "@/schemas/reservations";
+import "../dashboard.css";
 import { TableTurns } from "./TableTurns";
-import "./dashboard.css";
 
 interface props {
     reservations: Reservation[]
