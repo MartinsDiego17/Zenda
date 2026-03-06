@@ -12,10 +12,20 @@ async function bootstrap() {
   app.useGlobalFilters(new HttpErrorFilter());
   app.setGlobalPrefix('api');
   app.enableCors({
-    origin: [
-      'http://localhost:3000',
-      'https://zenda-i3jv.vercel.app/',
-    ],
+    origin: (origin, callback) => {
+      const allowed = [
+        'http://localhost:3000',
+        'https://zenda-production.com',
+      ];
+
+      const isVercel = origin?.endsWith('.vercel.app');
+
+      if (!origin || allowed.includes(origin) || isVercel) {
+        callback(null, true);
+      } else {
+        callback(new Error('Not allowed by CORS'));
+      }
+    },
     methods: 'GET,POST,PUT,DELETE,PATCH',
     credentials: true,
   });
