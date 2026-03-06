@@ -83,7 +83,7 @@ export class ReservationsService {
         metadata: {
           infoReservation
         },
-        notification_url: "https://unspayed-renay-unmutualized.ngrok-free.dev/api/reservations/create-with-payment"
+        notification_url: "https://server-zenda.onrender.com/api/reservations/create-with-payment"
       }
     })
     return { data: preference.init_point }
