@@ -12,7 +12,7 @@ async function bootstrap() {
   app.useGlobalFilters(new HttpErrorFilter());
   app.setGlobalPrefix('api');
   app.enableCors({
-    origin: ['http://localhost:3000', "https://zenda-i3jv.vercel.app/"],
+    origin: ['http://localhost:3000', "https://zenda-i3jv-pbco6txdq-diegomartinsupe-1164s-projects.vercel.app/"],
     methods: 'GET,POST,PUT,DELETE,PATCH',
     credentials: true,
   });
