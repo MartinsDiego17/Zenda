@@ -2,7 +2,7 @@ import { create } from "zustand";
 import { persist, createJSONStorage } from "zustand/middleware";
 import { ProfessionalSettings } from "@/schemas/professional_settings";
 import { serverConfig } from "@/lib/serverConfig";
-import axios from "axios";
+import { axiosClient } from "@/lib/axiosClient";
 
 interface ProfessionalSettingsStore {
   professional_settings: ProfessionalSettings | null;
@@ -18,7 +18,7 @@ export const useProfessionalSettingsStore = create<ProfessionalSettingsStore>()(
       getProfessionalSettings: async () => {
         const localUrl = serverConfig.professionalSettings.get;
         try {
-          const response = await axios(localUrl);
+          const response = await axiosClient(localUrl);
           const localProfessionalSettings: ProfessionalSettings = response.data.data[0];
           set({ professional_settings: localProfessionalSettings });
           return localProfessionalSettings;
@@ -31,7 +31,7 @@ export const useProfessionalSettingsStore = create<ProfessionalSettingsStore>()(
       updateProfessionalSettings: async (newSettings: ProfessionalSettings) => {
         const localUrl = serverConfig.professionalSettings.patch({ id: newSettings.user_id });
         try {
-          const { data } = await axios.patch(localUrl, newSettings);
+          const { data } = await axiosClient.patch(localUrl, newSettings);
           set({ professional_settings: data.data });
           return data.data;
         } catch (error) {

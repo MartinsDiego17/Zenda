@@ -1,6 +1,6 @@
 "use client";
 import { useReservationsStore } from "@/store/ReservationsStore";
-import { CircleCheck, Calendar, Clock, Map, User, MapPin, ArrowLeft, Info, HomeIcon } from "lucide-react";
+import { CircleCheck, Calendar, Clock, Map, User, MapPin, Info, HomeIcon } from "lucide-react";
 import { useAuthStore } from "@/store/AuthStore";
 import { useEffect, useState, useRef } from "react";
 import { useProfessionalSettingsStore } from "@/store/ProfessionalSettingsStore";

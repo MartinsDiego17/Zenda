@@ -138,7 +138,6 @@ export const ReserveUser = () => {
     <>
       <section className="w-full max-h-screen flex justify-between  gap-x-10">
         <article className="w-1/2">
-
           <CalendarReserve
             handleDate={handleDate}
             handleTime={handleTime}

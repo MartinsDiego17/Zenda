@@ -164,64 +164,64 @@ export const CalendarReserve = ({
   )
 
   return (
-    <Card className="calendar-reserve-container mx-auto w-fit">
-      <CardContent>
-        <Calendar
-          mode="single"
-          selected={date}
-          onSelect={handleDate}
-          locale={es}
-          disabled={isDateDisabled}
-          id="user-calendar"
-          className="p-0 w-full"
-        />
-      </CardContent>
+      <Card className="calendar-reserve-container mx-auto w-fit">
+        <CardContent>
+          <Calendar
+            mode="single"
+            selected={date}
+            onSelect={handleDate}
+            locale={es}
+            disabled={isDateDisabled}
+            id="user-calendar"
+            className="p-0 w-full"
+          />
+        </CardContent>
 
-      <CardFooter className="border-t">
-        {date && timeSlots.length > 0 && (
-          <FieldGroup>
-            <Field>
-              <FieldLabel>Hora de comienzo</FieldLabel>
-              <InputGroup className="border-(--color-border)">
-                <Select onValueChange={handleTime}>
-                  <SelectTrigger
-                    id="time-from"
-                    className="border-none shadow-none cursor-pointer w-full"
-                  >
-                    <SelectValue placeholder="Seleccionar horario" />
-                  </SelectTrigger>
+        <CardFooter className="border-t">
+          {date && timeSlots.length > 0 && (
+            <FieldGroup>
+              <Field>
+                <FieldLabel>Hora de comienzo</FieldLabel>
+                <InputGroup className="border-(--color-border)">
+                  <Select onValueChange={handleTime}>
+                    <SelectTrigger
+                      id="time-from"
+                      className="border-none shadow-none cursor-pointer w-full"
+                    >
+                      <SelectValue placeholder="Seleccionar horario" />
+                    </SelectTrigger>
 
-                  <SelectContent className="time-select-content">
-                    {timeSlots.map(({ time, realTime }) => {
-                      const disabled = isConflicting(realTime)
+                    <SelectContent className="time-select-content">
+                      {timeSlots.map(({ time, realTime }) => {
+                        const disabled = isConflicting(realTime)
 
-                      return (
-                        <SelectItem
-                          key={realTime}
-                          value={realTime}
-                          disabled={disabled}
-                          className={
-                            disabled
-                              ? "time-select-item opacity-40 cursor-not-allowed"
-                              : "time-select-item"
-                          }
-                        >
-                          <span>{time}</span>
-                          <span>{disabled && "ocupado"}</span>
-                        </SelectItem>
-                      )
-                    })}
-                  </SelectContent>
-                </Select>
+                        return (
+                          <SelectItem
+                            key={realTime}
+                            value={realTime}
+                            disabled={disabled}
+                            className={
+                              disabled
+                                ? "time-select-item opacity-40 cursor-not-allowed"
+                                : "time-select-item"
+                            }
+                          >
+                            <span>{time}</span>
+                            <span>{disabled && "ocupado"}</span>
+                          </SelectItem>
+                        )
+                      })}
+                    </SelectContent>
+                  </Select>
 
-                <InputGroupAddon>
-                  <Clock2Icon className="text-muted-foreground" />
-                </InputGroupAddon>
-              </InputGroup>
-            </Field>
-          </FieldGroup>
-        )}
-      </CardFooter>
-    </Card>
+                  <InputGroupAddon>
+                    <Clock2Icon className="text-muted-foreground" />
+                  </InputGroupAddon>
+                </InputGroup>
+              </Field>
+            </FieldGroup>
+          )}
+        </CardFooter>
+      </Card>
   )
 }

@@ -1,5 +1,5 @@
+import { axiosClient } from "@/lib/axiosClient";
 import { serverConfig } from "@/lib/serverConfig";
-import axios from "axios";
 
 interface props {
     date: Date
@@ -21,7 +21,7 @@ export const getAvailabilityesReservations = async ({ date, professional_id }: p
     const localUrl = serverConfig.reservations.getAvailability({ date: formattedDateTime, professional_id });
 
     try {
-        const { data } = await axios(localUrl);
+        const { data } = await axiosClient(localUrl);
         return data.data;
     } catch (error) {
         throw error;

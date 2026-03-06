@@ -2,10 +2,10 @@
 
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
-import axios from "axios";
 
 import { Reservation } from "@/schemas/reservations";
 import { serverConfig } from "@/lib/serverConfig";
+import { axiosClient } from "@/lib/axiosClient";
 
 interface setCurrentReservationResponse {
     error: boolean;
@@ -34,7 +34,7 @@ export const useReservationsStore = create<ReservationsStore>()(
                     serverConfig.reservations.fetchReservationsByUser({ client_id });
 
                 try {
-                    const response = await axios(localUrl);
+                    const response = await axiosClient(localUrl);
                     const reservations: Reservation[] = response.data.data;
 
                     const sortReservations = [...reservations].sort(
@@ -73,7 +73,7 @@ export const useReservationsStore = create<ReservationsStore>()(
                     });
 
                 try {
-                    const response = await axios(localUrl);
+                    const response = await axiosClient(localUrl);
                     const reservations: Reservation[] = response.data.data;
 
                     const sortReservations = [...reservations].sort(
@@ -94,7 +94,7 @@ export const useReservationsStore = create<ReservationsStore>()(
                 const localUrl = `${serverConfig.reservations.common}/${reservationId}`;
 
                 try {
-                    await axios.delete(localUrl);
+                    await axiosClient.delete(localUrl);
                 } catch (error) {
                     return error;
                 }

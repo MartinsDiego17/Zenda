@@ -1,4 +1,6 @@
 import { ButtonPrimary } from "@/app/core/web-components/ButtonPrimary";
+import { Chip } from "@/app/core/web-components/Chip";
+import { Badge } from "@/components/ui/badge";
 import { ProfessionalSettings } from "@/schemas/professional_settings"
 import { SessionModalityToUser } from "@/schemas/reservations"
 import { ArrowRight, MapPin, Video } from "lucide-react";
@@ -59,14 +61,14 @@ export const ModalitiesReserve = ({
           <button
             onClick={() => handleModalitie({ modalitie: "Presencial" })}
             className={`w-full flex cursor-pointer items-center gap-3 rounded-xl border px-5 py-4 text-left transition-all ${currentModalitie === "Presencial"
-                ? "border-(--color-primary) bg-(--color-primary-transparent) shadow-sm"
-                : "border-border hover:border-(--color-primary-transparent) hover:bg-(--color-secondary-transparent)"
+              ? "border-(--color-primary) bg-(--color-primary-transparent) shadow-sm"
+              : "border-border hover:border-(--color-primary-transparent) hover:bg-(--color-secondary-transparent)"
               }`}
           >
             <div
               className={`flex size-10 items-center justify-center rounded-lg ${currentModalitie === "Presencial"
-                  ? "bg-(--color-primary) text-white"
-                  : "bg-(--color-terciary-transparent) text-[#555]"
+                ? "bg-(--color-primary) text-white"
+                : "bg-(--color-terciary-transparent) text-[#555]"
                 }`}
             >
               <MapPin className="size-5" />
@@ -80,7 +82,9 @@ export const ModalitiesReserve = ({
       </div>
 
       <div className="mt-20 w-full">
-
+        <div className="mb-2 flex justify-center">
+          <Chip text={`Duración de la sesión · ${currentProfessionalSettings.session_duration_minutes} min`} />
+        </div>
         <ButtonPrimary handler={handleContinue} disabled={!canContinue}>
           <span>Continuar</span>
           <span><ArrowRight /></span>

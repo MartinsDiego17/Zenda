@@ -1,5 +1,5 @@
+import { axiosClient } from "@/lib/axiosClient";
 import { serverConfig } from "@/lib/serverConfig";
-import axios from "axios";
 
 export interface PropsCalendarSchedule {
   min: Date | null;
@@ -15,7 +15,7 @@ export const getCalendarSchedule = async (): Promise<PropsCalendarSchedule> => {
   const localUrl = serverConfig.professionalSettings.get;
 
   try {
-    const { data } = await axios(localUrl);
+    const { data } = await axiosClient(localUrl);
     const settings = data.data[0];
 
     const { work_start_time, work_end_time } = settings;

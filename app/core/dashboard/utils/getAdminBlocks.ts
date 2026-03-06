@@ -1,6 +1,6 @@
+import { axiosClient } from "@/lib/axiosClient";
 import { serverConfig } from "@/lib/serverConfig";
 import { Reservation } from "@/schemas/reservations";
-import axios from "axios";
 
 export interface AdminBlock {
     start: string
@@ -13,7 +13,7 @@ export const getAdminBlocks = async ({ professionalId }: { professionalId: strin
     const localUrl = serverConfig.reservations.fetchReservationsByProfessional({ professionalId });
 
     try {
-        const { data } = await axios(localUrl);
+        const { data } = await axiosClient(localUrl);
         const reservations = data.data;
         reservations.forEach((res: Reservation) => {
             if (res.client_id === professionalId) {
