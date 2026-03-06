@@ -12,7 +12,14 @@ async function bootstrap() {
   app.useGlobalFilters(new HttpErrorFilter());
   app.setGlobalPrefix('api');
   app.enableCors({
-    origin: ['http://localhost:3000', "https://zenda-i3jv-pbco6txdq-diegomartinsupe-1164s-projects.vercel.app/"],
+    origin: [
+      'http://localhost:3000',
+      "https://zenda-i3jv-pbco6txdq-diegomartinsupe-1164s-projects.vercel.app/",
+      'zenda-i3jv.vercel.app',
+      'zenda-i3jv-git-main-diegomartinsupe-1164s-projects.vercel.app',
+      'zenda-i3jv-qbx4y6ahu-diegomartinsupe-1164s-projects.vercel.app',
+      'https://zenda-i3jv-diegomartinsupe-1164s-projects.vercel.app/'
+    ],
     methods: 'GET,POST,PUT,DELETE,PATCH',
     credentials: true,
   });
@@ -27,6 +34,6 @@ async function bootstrap() {
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('docs', app, document);
 
-    await app.listen(process.env.PORT ?? 4000, '0.0.0.0');
+  await app.listen(process.env.PORT ?? 4000, '0.0.0.0');
 }
 bootstrap();
