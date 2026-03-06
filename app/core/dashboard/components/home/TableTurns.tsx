@@ -85,7 +85,7 @@ export const TableTurns = ({ reservations }: props) => {
                             : (
                                 <TableRow>
                                     <TableCell colSpan={4} className="py-10 text-center hover:none">
-                                        No tienes reservas en tu historial.
+                                        No tenés reservas en tu historial.
                                     </TableCell>
                                 </TableRow>
                             )

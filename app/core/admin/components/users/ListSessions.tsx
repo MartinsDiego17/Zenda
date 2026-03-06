@@ -1,6 +1,6 @@
 "use client";
 import { ResponseUsersReservations } from "@/schemas/ResponseUserReservations";
-import { CalendarDays, Mail, User, Users } from "lucide-react";
+import { CalendarDays, Users } from "lucide-react";
 import { HistoryReservations } from "../reservations/HistoryReservations";
 import { useState } from "react";
 import { Profile } from "@/schemas/profile";
