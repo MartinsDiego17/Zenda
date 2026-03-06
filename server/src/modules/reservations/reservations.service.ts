@@ -10,16 +10,21 @@ import { formattedReservation } from './utils/formattedReservation';
 import { ProfilesService } from '../profiles/profiles.service';
 import { ResponseUsersReservations } from './types/ResponseUserReservations';
 import { getInfoDate } from './utils/getInfoDate';
+import { ConfigService } from '@nestjs/config';
 
 @Injectable()
 export class ReservationsService {
+  private readonly serverUrl: string;
 
   constructor(
     private readonly supabaseService: SupabaseService,
     private readonly mercadoPago: MercadoPagoService,
     private readonly PaymentsService: PaymentsService,
-    private readonly ProfilesServices: ProfilesService
-  ) { }
+    private readonly ProfilesServices: ProfilesService,
+    private configService: ConfigService
+  ) {
+    this.serverUrl = this.configService.get<string>("config.server_url") || "http://localhost:4000"
+  }
 
   async createReservationWithoutPayment(infoPayment) {
     const newReservation = formattedReservation(infoPayment);
@@ -34,8 +39,9 @@ export class ReservationsService {
   async createReservationWithPayment(infoPayment) {
 
     const localSupabaseClient = await this.supabaseService.getClient();
-
     const payment = await new Payment(this.mercadoPago.getMercadoPago()).get({ id: infoPayment.data.id });
+
+
     const { info_reservation } = payment.metadata;
     const { deposit_amount, reservation } = info_reservation;
     if (payment.status === "approved") {
@@ -78,12 +84,12 @@ export class ReservationsService {
           id: infoReservation.reservation.id,
           title: "Pago de seña de reserva",
           quantity: 1,
-          unit_price:  infoReservation.deposit_amount 
+          unit_price: infoReservation.deposit_amount
         }],
         metadata: {
           infoReservation
         },
-        notification_url: "https://server-zenda.onrender.com/api/reservations/create-with-payment"
+        notification_url: `${this.serverUrl}/reservations/create-with-payment`
       }
     })
     return { data: preference.init_point }
