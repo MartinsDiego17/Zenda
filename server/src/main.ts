@@ -14,11 +14,7 @@ async function bootstrap() {
   app.enableCors({
     origin: [
       'http://localhost:3000',
-      "https://zenda-i3jv-pbco6txdq-diegomartinsupe-1164s-projects.vercel.app/",
-      'zenda-i3jv.vercel.app',
-      'zenda-i3jv-git-main-diegomartinsupe-1164s-projects.vercel.app',
-      'zenda-i3jv-qbx4y6ahu-diegomartinsupe-1164s-projects.vercel.app',
-      'https://zenda-i3jv-diegomartinsupe-1164s-projects.vercel.app/'
+      'https://zenda-i3jv.vercel.app/',
     ],
     methods: 'GET,POST,PUT,DELETE,PATCH',
     credentials: true,
