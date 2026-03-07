@@ -69,8 +69,8 @@ export const Hero = () => {
                         <Image
                             src={heroImage.src}
                             alt="Calm and welcoming therapy office with natural lighting and modern decor"
-                            width={700}
-                            height={500}
+                            width={2000}
+                            height={1000}
                             className="aspect-4/3 w-full object-cover"
                             priority
                         />

@@ -1,6 +1,5 @@
 import { Profile } from "@/schemas/profile";
 import { Mail } from "lucide-react";
-import { useEffect } from "react";
 
 interface props {
     user: Profile
@@ -8,10 +7,6 @@ interface props {
 }
 
 export const CardUser = ({ user, isUserSelected = false }: props) => {
-
-    useEffect(() => {
-        console.log("USER: ", user.full_name);
-    }, [user]);
 
     return (
         <div className={`p-5 py-3 border-b card-current-user flex place-items-center ${isUserSelected && "user-selected"}`}>

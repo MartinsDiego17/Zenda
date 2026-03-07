@@ -6,12 +6,13 @@ import { serverConfig } from '@/lib/serverConfig'
 import { axiosClient } from '@/lib/axiosClient'
 
 interface AuthStore {
-  user: Profile | null,
+  user: Profile | null
   session: Session | null
   setSessionFromSupabase: () => Promise<Session | null | undefined>
   loginWithGoogle: () => Promise<void>
   logout: () => Promise<void>
   findOneUser: ({ userId }: { userId: string }) => Promise<Profile | null>
+  updateProfile: ({ userId, profile }: { userId: string, profile: Profile }) => Promise<void>
 }
 
 export const useAuthStore = create<AuthStore>((set) => ({
@@ -27,7 +28,7 @@ export const useAuthStore = create<AuthStore>((set) => ({
       return
     }
     set({ session: data.session })
-    return data.session;
+    return data.session
   },
 
   loginWithGoogle: async () => {
@@ -48,17 +49,30 @@ export const useAuthStore = create<AuthStore>((set) => ({
       console.error('Logout error:', error)
       return
     }
-    set({ session: null })
-    window.location.href = "/";
+    set({ session: null, user: null })
+    window.location.href = '/'
   },
 
   findOneUser: async ({ userId }: { userId: string }) => {
-    const localUrl = serverConfig.profile.findOne({ userId });
+    const localUrl = serverConfig.profile.findOne({ userId })
     try {
-      const { data } = await axiosClient(localUrl);
-      return data.data[0];
+      const { data } = await axiosClient(localUrl)
+      const userFound = data.data[0]
+      set({ user: userFound })
+      return userFound
     } catch (error) {
-      throw error;
+      throw error
+    }
+  },
+
+  updateProfile: async ({ userId, profile }: { userId: string, profile: Profile }) => {
+    const localUrl = serverConfig.profile.update({ userId })
+    try {
+      const { data } = await axiosClient.put(localUrl, profile)
+      const updatedProfile = data.data
+      set({ user: updatedProfile })
+    } catch (error) {
+      throw error
     }
   }
 

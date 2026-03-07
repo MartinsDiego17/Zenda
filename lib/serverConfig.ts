@@ -20,6 +20,7 @@ export const serverConfig = {
     },
     profile: {
         findOne: ({ userId }: { userId: string }) => { return `${serverUrl}/profiles/${userId}` },
-        findAll: `${serverUrl}/profiles`
+        findAll: `${serverUrl}/profiles`,
+        update: ({ userId }: { userId: string }) => { return `${serverUrl}/profiles/${userId}` }
     }
 }

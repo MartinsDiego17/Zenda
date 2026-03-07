@@ -54,8 +54,8 @@ export const Choose = () => {
                             <Image
                                 src={chooseImage.src}
                                 alt="Organized therapy workspace with calendar and tools on a clean desk"
-                                width={600}
-                                height={450}
+                                width={2000}
+                                height={1000}
                                 className="aspect-4/3 w-full object-cover"
                             />
                         </div>

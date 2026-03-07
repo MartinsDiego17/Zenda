@@ -17,8 +17,6 @@ export class RolesGuard implements CanActivate {
       .eq('id', userId)
       .single();
 
-    console.log("DATA: ", data);
-    console.log("ERROR: ", error);
 
     if (error || !data) {
       throw new ForbiddenException('No se pudo verificar el rol del usuario');

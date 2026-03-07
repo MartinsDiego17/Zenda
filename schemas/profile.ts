@@ -8,5 +8,7 @@ export interface Profile {
   full_name: string;
   role: UserRole;
   is_active: boolean;
+  birth_date: string
+  is_profile_complete: boolean
   created_at: Timestamp;
 }

@@ -226,6 +226,7 @@
         padding-bottom: 5%;
         min-height: 100svh;
     }
+
     /* ... resto de estilos tablet ... */
 }
 
@@ -239,9 +240,23 @@
         overflow-y: auto;
         min-height: 100svh;
     }
+
     /* ... resto de estilos mobile ... */
 }
 
+.button-open-modal-complete-profile {
+    background-color: transparent;
+    border-radius: 50px;
+    color: var(--color-primary);
+    display: flex;
+    align-items: center;
+    transition: .2s;
+    cursor: pointer;
+
+    &:hover {
+        column-gap: 10px;
+    }
+}
 
 /* ================================
    TABLET — max 1024px
@@ -277,13 +292,13 @@
     }
 
     /* ReserveUser — calendario + modalidades en columna */
-    .dashboard-son > section {
+    .dashboard-son>section {
         flex-direction: column;
         max-height: none;
         row-gap: 20px;
     }
 
-    .dashboard-son > section > article {
+    .dashboard-son>section>article {
         width: 100% !important;
     }
 
@@ -304,7 +319,7 @@
     }
 
     /* ReservePayment — cards en columna */
-    .payment-container > section {
+    .payment-container>section {
         flex-direction: column;
         height: auto;
     }
@@ -337,7 +352,8 @@
     /* Layout general */
     .dashboard-container {
         align-items: flex-start;
-        padding-top: 100px; /* espacio para el header */
+        padding-top: 100px;
+        /* espacio para el header */
         overflow-y: auto;
         height: auto;
         min-height: 100svh;
@@ -421,19 +437,21 @@
     }
 
     /* Botones de acción en ReservePayment (Volver + Confirmar) */
-    .payment-container ~ div {
+    .payment-container~div {
         flex-direction: column;
         width: 100%;
         gap: 10px;
     }
 
-    .payment-container ~ div a,
-    .payment-container ~ div button {
+    .payment-container~div a,
+    .payment-container~div button {
         width: 100%;
     }
+
     .buttons-payment {
         display: block;
     }
+
     .buttons-payment #button-personalized:first-child {
         margin-bottom: 3%;
     }
