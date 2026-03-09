@@ -1,4 +1,4 @@
-# 🧠 AppTurnos
+#  AppTurnos
 
 Aplicación web de gestión de turnos para un profesional de la salud mental y sus pacientes. Permite reservar, confirmar y administrar sesiones de manera simple, organizada y sin fricción.
 
@@ -6,14 +6,14 @@ Aplicación web de gestión de turnos para un profesional de la salud mental y s
 
 ---
 
-## 📸 Demo
+##  Demo
 
 <!-- Reemplazá con un screenshot o GIF de la app -->
 ![Demo placeholder](./docs/demo.png)
 
 ---
 
-## ✨ Funcionalidades principales
+##  Funcionalidades principales
 
 - Los pacientes pueden registrarse, ver la disponibilidad del profesional y reservar turnos
 - Confirmación de turno mediante el pago de una seña (integración con Mercado Pago)
@@ -24,7 +24,7 @@ Aplicación web de gestión de turnos para un profesional de la salud mental y s
 
 ---
 
-## 🛠️ Tech Stack
+##  Tech Stack
 
 | Capa | Tecnologías |
 |------|-------------|
@@ -38,7 +38,7 @@ Aplicación web de gestión de turnos para un profesional de la salud mental y s
 
 ---
 
-## 🚀 Instalación y uso local
+##  Instalación y uso local
 
 ### Prerrequisitos
 
@@ -72,7 +72,7 @@ La app estará disponible en `http://localhost:3000`.
 
 ---
 
-## ⚙️ Variables de entorno
+##  Variables de entorno
 
 Crear un archivo `.env` en la raíz basándose en `.env.example`:
 
@@ -95,7 +95,7 @@ NEXT_PUBLIC_BASE_URL=http://localhost:3000
 
 ---
 
-## 👥 Roles del sistema
+##  Roles del sistema
 
 | Rol | Descripción |
 |-----|-------------|
@@ -107,7 +107,7 @@ NEXT_PUBLIC_BASE_URL=http://localhost:3000
 
 ---
 
-## 📁 Estructura del proyecto
+##  Estructura del proyecto
 
 ```
 /
@@ -123,10 +123,9 @@ NEXT_PUBLIC_BASE_URL=http://localhost:3000
 
 ---
 
-## 🗄️ Base de datos
+##  Base de datos
 
-El esquema completo está disponible en:
-👉 [Ver diagrama en dbdiagram.io](https://dbdiagram.io/d/...)
+El esquema completo está disponible en:👉 [Ver diagrama en dbdiagram.io](https://dbdiagram.io/d/...)
 
 Para regenerar el cliente de Prisma tras modificar el esquema:
 
@@ -137,7 +136,7 @@ npx prisma migrate dev --name nombre-de-la-migracion
 
 ---
 
-## 🧪 Tests
+##  Tests
 
 ```bash
 # Correr todos los tests
@@ -149,7 +148,7 @@ npm run test:watch
 
 ---
 
-## 🌐 Deploy
+##  Deploy
 
 El proyecto se despliega en **Railway**. Cada push a `main` dispara un deploy automático.
 
@@ -157,7 +156,7 @@ Para configurar el entorno de producción, definir las mismas variables del `.en
 
 ---
 
-## 🗺️ Roadmap
+##  Roadmap
 
 - [x] Autenticación y roles
 - [x] Reserva de turnos
@@ -169,6 +168,6 @@ Para configurar el entorno de producción, definir las mismas variables del `.en
 
 ---
 
-## 📄 Licencia
+##  Licencia
 
 MIT — libre para usar y modificar.
