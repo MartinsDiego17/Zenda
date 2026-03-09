@@ -1,4 +1,4 @@
-# 🧠 Zenda
+#  Zenda
 
 **Gestión de turnos pensada para profesionales de la salud mental.**
 
@@ -8,7 +8,7 @@ Zenda es una aplicación web que reemplaza las coordinaciones por WhatsApp, las 
 
 ## ¿Para quién es?
 
-Para psicólogos, psiquiatras y terapeutas que quieren dejar de administrar su agenda a mano y enfocarse en lo que importa: sus pacientes.
+Para un psicólogo/psiquiatra que quiere dejar de administrar su agenda a mano y enfocarse en lo que importa: sus pacientes.
 
 ---
 
@@ -25,14 +25,13 @@ Zenda resuelve todo eso en un solo lugar.
 
 ---
 
-## ✨ Qué puede hacer
+##  Qué puede hacer
 
 **El profesional puede:**
 - Definir sus horarios, días laborales y duración de sesiones
 - Elegir si las sesiones son presenciales, virtuales o ambas
 - Requerir el pago de una seña para confirmar cada turno
 - Ver y gestionar todas sus reservas desde un panel centralizado
-- Cancelar o reprogramar turnos con trazabilidad completa
 - Consultar el historial de cada paciente
 
 **El paciente puede:**
@@ -43,19 +42,19 @@ Zenda resuelve todo eso en un solo lugar.
 
 ---
 
-## 🖥️ Diseñada para usarse en cualquier dispositivo
+##  Diseñada para usarse en cualquier dispositivo
 
 Interfaz responsive que funciona igual de bien en celular, tablet y computadora. Sin instalaciones, directamente desde el navegador.
 
 ---
 
-## 💳 Pagos integrados
+##  Pagos integrados
 
 Cobro de seña incorporado con **Mercado Pago**. El profesional define el monto, el paciente paga al reservar y el turno queda confirmado automáticamente.
 
 ---
 
-## 🔒 Segura y confiable
+##  Segura y confiable
 
 - Acceso por roles: cada usuario ve solo lo que le corresponde
 - Autenticación segura para profesional y pacientes
@@ -63,8 +62,8 @@ Cobro de seña incorporado con **Mercado Pago**. El profesional define el monto,
 
 ---
 
-## 📬 Contacto
+##  Contacto
 
 ¿Te interesa Zenda para tu práctica profesional?
 
-**[tu@email.com](mailto:tu@email.com)**
+**[diegomartinsupe@hotmail.com](mailto:diegomartinsupe@hotmail.com)**
